@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
+import modelo.*;
 
 @Entity
 public class Video {
@@ -17,7 +18,7 @@ public class Video {
 	
 	private String nome;
 	
-	private double classificacao;
+	private double media;
 
 	@Column(columnDefinition = "DATE")
 	private LocalDateTime dataHora = LocalDateTime.now();
@@ -29,6 +30,15 @@ public class Video {
 	@JoinColumn(name="dataHora") 
 	private List<Visualizacao> visualizacoes = new ArrayList<>();
 
+	public Video() {}
+	
+	public Video(String link, String nome, String palavra, LocalDateTime data) {
+		this.link = link;
+		this.nome = nome;
+		this.assuntos.add(new Assunto(palavra));
+		this.dataHora = data;
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -53,12 +63,12 @@ public class Video {
 		this.nome = nome;
 	}
 
-	public double getClassificacao() {
-		return classificacao;
+	public double getMedia() {
+		return media;
 	}
 
-	public void setClassificacao(double classificacao) {
-		this.classificacao = classificacao;
+	public void setClassificacao(double media) {
+		this.media = media;
 	}
 
 	public LocalDateTime getDataHora() {
