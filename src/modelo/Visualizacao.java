@@ -15,8 +15,35 @@ public class Visualizacao {
 	
 	private int nota;
 	
+	private Video video;
+	private Usuario usuario;
+	
+	public Visualizacao() {}
+	
+	public Visualizacao(int nota, Video video, Usuario usuario) {
+		this.nota = nota;
+		this.video = video;
+		this.usuario = usuario;
+	}
+	
 	public int getId() {
 		return id;
+	}
+
+	public Video getVideo() {
+		return video;
+	}
+
+	public void setVideo(Video video) {
+		this.video = video;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	public void setId(int id) {

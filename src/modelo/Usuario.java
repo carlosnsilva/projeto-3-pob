@@ -17,6 +17,13 @@ public class Usuario {
 	@JoinColumn(name="id")
 	private List<Visualizacao> visualizacoes = new ArrayList<>();
 	
+	
+	public Usuario() {}
+	
+	public Usuario(String email) {
+		this.email = email;
+	}
+	
 	public int getId() {
 		return id;
 	}

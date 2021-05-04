@@ -10,6 +10,12 @@ public class Assunto {
 	private int id;
 	private String palavra;
 	
+	public Assunto() {}
+	
+	public Assunto(String palavra) {
+		this.palavra = palavra;
+	}
+	
 	public int getId() {
 		return id;
 	}
