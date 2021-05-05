@@ -1,31 +1,47 @@
 package modelo;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Assunto {
-
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
 	private String palavra;
 	
-	public Assunto() {}
+	@OneToMany(mappedBy="assunto", 
+			cascade=CascadeType.ALL, 	
+			orphanRemoval=true,			//default � false
+			fetch=FetchType.EAGER) 		//default � LAZY
+	private List<Video> videos = new ArrayList<>();
+	
+	public Assunto () {};
 	
 	public Assunto(String palavra) {
 		this.palavra = palavra;
 	}
-	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+
 	public String getPalavra() {
 		return palavra;
 	}
-	public void setPalavra(String palavra) {
-		this.palavra = palavra;
+
+	public void adicionar(Video v) {
+		videos.add(v);
 	}
+	
+	@Override
+	public String toString() {
+		String texto = "Assunto [palavra=" + palavra;
+		for(Video v : videos) {
+			texto += v.getNome();
+		}
+		return texto;
+	}
+	
+	
+	
 }
