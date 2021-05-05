@@ -15,29 +15,31 @@ public class Fachada {
 	private static DAOVideo daoVideo = new DAOVideo();
 	private static DAOVisualizacao daoVisualizacao = new DAOVisualizacao();
 	
-	private static void iniciar() {
+	public static void iniciar() {
 		DAO.open();
 	}
 	
-	private static void fechar() {
+	public static void finalizar() {
 		DAO.close();
 	}
 	
-	public static Video cadastrarVideo(String link, String nome, String palavra) throws  Exception{
-		DAO.begin();	
-		Video v = daoVideo.read(link);
-		if(v != null) {
+	public static Video cadastrarVideo(String link, String nome) throws  Exception{
+		DAO.begin();
+		if (nome.isEmpty()) {
 			DAO.rollback();
-			throw new Exception("video ja cadastrado:" + link);
+			throw new Exception("Não foi passado um nome pro video");
 		}
-		
-		LocalDateTime currentDateTime = LocalDateTime.now();
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-		String dataStr = currentDateTime.format(formatter);
-		
-		// Falta converte dataStr para LocalDateTime
-		v = new Video(link, nome, palavra, dataStr);
-		daoVideo.create(v);	
+		if (link.isEmpty()) {
+			DAO.rollback();
+			throw new Exception("Não foi passado o link do video");
+		}
+		Video v = daoVideo.read(link);
+		if (v != null) {
+			DAO.rollback();
+			throw new Exception("Link ja cadastrado: " + link);
+		}
+		v = new Video(link, nome);
+		daoVideo.create(v);
 		DAO.commit();
 		return v;
 	}
@@ -128,7 +130,7 @@ public class Fachada {
 		DAO.commit();
 	}
 	
-	//M�todos de listagem
+	//M�todos de listagem
 	public static List<Video> listarVideos(){
 		return daoVideo.readAll();
 	}

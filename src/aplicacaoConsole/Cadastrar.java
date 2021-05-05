@@ -1,60 +1,40 @@
 package aplicacaoConsole;
-/**********************************
- * IFPB - Curso Superior de Tec. em Sist. para Internet
- * POB - Persistencia de Objetos
- * Prof. Fausto Ayres
- *
- */
 
 import fachada.Fachada;
-import modelo.Pessoa;
-import modelo.Reuniao;
-import modelo.Viagem;
-
 
 public class Cadastrar {
 
 	public Cadastrar(){
-		Fachada.inicializar();
-		System.out.println("cadastrando...");
 		try {
-			Pessoa p;
-			p=Fachada.criarTelefone("joao","988880000");
-			p=Fachada.criarTelefone("joao","988881111");	
-			p=Fachada.criarTelefone("maria","987882222");
-			p=Fachada.criarTelefone("maria","988883333");
-			p=Fachada.criarTelefone("maria","32471234");
-			p=Fachada.criarTelefone("jose","987884444");
-			p=Fachada.criarTelefone("paulo","988885555");
+			Fachada.iniciar();
+			
+			System.out.println("cadastrando...");
+			
+			Fachada.cadastrarVideo("https://www.youtube.com/watch?v=1u2qu-EmIRc", "Git - Lecture 0 - CS50's Web Programming with Python and JavaScript 2018");
+			Fachada.cadastrarVideo("https://www.youtube.com/watch?v=6i-_R5cAcEc", "Curso POO Java #04b​ - Métodos Getter, Setter e Construtor");
+			Fachada.cadastrarVideo("https://www.youtube.com/watch?v=XLr-igSIUU0&list=PLbaXFvl9CSyUfTbVhyHItpiuONlZCW9ZU&index=3", "Programação para Web I - Inserindo Angular Material - Angular aula 2");
+			/*
+			Fachada.cadastrarUsuario("carlos@email.com");
+			Fachada.cadastrarUsuario("guilherme@email.com");
+			Fachada.cadastrarUsuario("jane@email.com");
+			Fachada.cadastrarUsuario("david@email.com");
+			
+			Fachada.registrarVisualizacao("https://www.youtube.com/watch?v=1u2qu-EmIRc", "carlos@email.com", 5); 
+			Fachada.registrarVisualizacao("https://www.youtube.com/watch?v=1u2qu-EmIRc", "guilherme@email.com", 5);
+			Fachada.registrarVisualizacao("https://www.youtube.com/watch?v=6i-_R5cAcEc", "jane@email.com", 4);
+			Fachada.registrarVisualizacao("https://www.youtube.com/watch?v=6i-_R5cAcEc", "david@email.com", 4);
+			Fachada.registrarVisualizacao("https://www.youtube.com/watch?v=XLr-igSIUU0&list=PLbaXFvl9CSyUfTbVhyHItpiuONlZCW9ZU&index=3", "carlos@email.com", 5);
+			Fachada.registrarVisualizacao("https://www.youtube.com/watch?v=XLr-igSIUU0&list=PLbaXFvl9CSyUfTbVhyHItpiuONlZCW9ZU&index=3", "guilherme@email.com", 5);
+			Fachada.registrarVisualizacao("https://www.youtube.com/watch?v=XLr-igSIUU0&list=PLbaXFvl9CSyUfTbVhyHItpiuONlZCW9ZU&index=3", "jane@email.com", 3);
+			Fachada.registrarVisualizacao("https://www.youtube.com/watch?v=XLr-igSIUU0&list=PLbaXFvl9CSyUfTbVhyHItpiuONlZCW9ZU&index=3", "david@email.com", 3);
+			*/
+			
 		} catch (Exception e) 	{
 			System.out.println(e.getMessage());
 		}
-
-		try {
-			Viagem v;
-			v=Fachada.criarViagem("joao",	"01/05/2021", "CHINA");
-			v=Fachada.criarViagem("joao",	"02/05/2021", "EUA");
-			v=Fachada.criarViagem("joao",	"03/05/2021", "CANADA");
-			v=Fachada.criarViagem("maria",	"01/05/2021", "SAO PAULO");
-			v=Fachada.criarViagem("maria", 	"02/05/2021", "BRASILIA");
-			v=Fachada.criarViagem("maria",	"03/05/2021", "BRASILIA");
+		finally {
+			Fachada.finalizar();
 		}
-		catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-
-		try {
-			Reuniao r;
-			r=Fachada.criarReuniao("07/05/2021 08:00","economia", "joao", "maria");
-			r=Fachada.criarReuniao("07/05/2021 19:00","economia", "joao", "jose");
-			r=Fachada.criarReuniao("10/05/2021 14:00","demissao", "joao", "paulo");
-			r=Fachada.criarReuniao("12/05/2021 10:00","eleicao", "joao", "maria", "jose", "paulo");
-		}
-		catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-
-		Fachada.finalizar();
 		System.out.println("fim do programa");
 	}
 
@@ -69,5 +49,3 @@ public class Cadastrar {
 		new Cadastrar();
 	}
 }
-
-

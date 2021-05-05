@@ -1,141 +1,91 @@
-[EL Fine]: server: 2021-04-23 16:42:12.211--Thread(Thread[main,5,main])--Configured server platform: org.eclipse.persistence.platform.server.NoServerPlatform
-[EL Config]: metadata: 2021-04-23 16:42:12.323--ServerSession(355790875)--Thread(Thread[main,5,main])--The access type for the persistent class [class modelo.Pessoa] is set to [FIELD].
-[EL Config]: metadata: 2021-04-23 16:42:12.336--ServerSession(355790875)--Thread(Thread[main,5,main])--The target entity (reference) class for the many to many mapping element [field reunioes] is being defaulted to: class modelo.Reuniao.
-[EL Config]: metadata: 2021-04-23 16:42:12.338--ServerSession(355790875)--Thread(Thread[main,5,main])--The target entity (reference) class for the one to many mapping element [field viagens] is being defaulted to: class modelo.Viagem.
-[EL Config]: metadata: 2021-04-23 16:42:12.345--ServerSession(355790875)--Thread(Thread[main,5,main])--The target class (reference) class for the element collection mapping element [field apelidos] is being defaulted to: class java.lang.String.
-[EL Config]: metadata: 2021-04-23 16:42:12.345--ServerSession(355790875)--Thread(Thread[main,5,main])--The target entity (reference) class for the one to many mapping element [field telefones] is being defaulted to: class modelo.Telefone.
-[EL Config]: metadata: 2021-04-23 16:42:12.345--ServerSession(355790875)--Thread(Thread[main,5,main])--The access type for the persistent class [class modelo.Reuniao] is set to [FIELD].
-[EL Config]: metadata: 2021-04-23 16:42:12.346--ServerSession(355790875)--Thread(Thread[main,5,main])--The target entity (reference) class for the many to many mapping element [field participantes] is being defaulted to: class modelo.Pessoa.
-[EL Config]: metadata: 2021-04-23 16:42:12.346--ServerSession(355790875)--Thread(Thread[main,5,main])--The access type for the persistent class [class modelo.Viagem] is set to [FIELD].
-[EL Config]: metadata: 2021-04-23 16:42:12.347--ServerSession(355790875)--Thread(Thread[main,5,main])--The access type for the persistent class [class modelo.Telefone] is set to [FIELD].
-[EL Config]: metadata: 2021-04-23 16:42:12.348--ServerSession(355790875)--Thread(Thread[main,5,main])--The target entity (reference) class for the many to one mapping element [field pessoa] is being defaulted to: class modelo.Pessoa.
-[EL Config]: metadata: 2021-04-23 16:42:12.349--ServerSession(355790875)--Thread(Thread[main,5,main])--The alias name for the entity class [class modelo.Pessoa] is being defaulted to: Pessoa.
-[EL Config]: metadata: 2021-04-23 16:42:12.35--ServerSession(355790875)--Thread(Thread[main,5,main])--The table name for entity [class modelo.Pessoa] is being defaulted to: PESSOA.
-[EL Config]: metadata: 2021-04-23 16:42:12.361--ServerSession(355790875)--Thread(Thread[main,5,main])--The column name for element [foto] is being defaulted to: FOTO.
-[EL Config]: metadata: 2021-04-23 16:42:12.363--ServerSession(355790875)--Thread(Thread[main,5,main])--The column name for element [dtnascimento] is being defaulted to: DTNASCIMENTO.
-[EL Config]: metadata: 2021-04-23 16:42:12.364--ServerSession(355790875)--Thread(Thread[main,5,main])--The column name for element [nome] is being defaulted to: NOME.
-[EL Config]: metadata: 2021-04-23 16:42:12.364--ServerSession(355790875)--Thread(Thread[main,5,main])--The column name for element [id] is being defaulted to: ID.
-[EL Config]: metadata: 2021-04-23 16:42:12.365--ServerSession(355790875)--Thread(Thread[main,5,main])--The column name for element [sexo] is being defaulted to: SEXO.
-[EL Config]: metadata: 2021-04-23 16:42:12.367--ServerSession(355790875)--Thread(Thread[main,5,main])--The alias name for the entity class [class modelo.Reuniao] is being defaulted to: Reuniao.
-[EL Config]: metadata: 2021-04-23 16:42:12.368--ServerSession(355790875)--Thread(Thread[main,5,main])--The table name for entity [class modelo.Reuniao] is being defaulted to: REUNIAO.
-[EL Config]: metadata: 2021-04-23 16:42:12.368--ServerSession(355790875)--Thread(Thread[main,5,main])--The column name for element [assunto] is being defaulted to: ASSUNTO.
-[EL Config]: metadata: 2021-04-23 16:42:12.369--ServerSession(355790875)--Thread(Thread[main,5,main])--The column name for element [datahora] is being defaulted to: DATAHORA.
-[EL Config]: metadata: 2021-04-23 16:42:12.369--ServerSession(355790875)--Thread(Thread[main,5,main])--The alias name for the entity class [class modelo.Viagem] is being defaulted to: Viagem.
-[EL Config]: metadata: 2021-04-23 16:42:12.369--ServerSession(355790875)--Thread(Thread[main,5,main])--The table name for entity [class modelo.Viagem] is being defaulted to: VIAGEM.
-[EL Config]: metadata: 2021-04-23 16:42:12.37--ServerSession(355790875)--Thread(Thread[main,5,main])--The column name for element [data] is being defaulted to: DATA.
-[EL Config]: metadata: 2021-04-23 16:42:12.37--ServerSession(355790875)--Thread(Thread[main,5,main])--The column name for element [id] is being defaulted to: ID.
-[EL Config]: metadata: 2021-04-23 16:42:12.37--ServerSession(355790875)--Thread(Thread[main,5,main])--The column name for element [destino] is being defaulted to: DESTINO.
-[EL Config]: metadata: 2021-04-23 16:42:12.37--ServerSession(355790875)--Thread(Thread[main,5,main])--The alias name for the entity class [class modelo.Telefone] is being defaulted to: Telefone.
-[EL Config]: metadata: 2021-04-23 16:42:12.37--ServerSession(355790875)--Thread(Thread[main,5,main])--The table name for entity [class modelo.Telefone] is being defaulted to: TELEFONE.
-[EL Config]: metadata: 2021-04-23 16:42:12.37--ServerSession(355790875)--Thread(Thread[main,5,main])--The column name for element [numero] is being defaulted to: NUMERO.
-[EL Config]: metadata: 2021-04-23 16:42:12.371--ServerSession(355790875)--Thread(Thread[main,5,main])--The column name for element [id] is being defaulted to: ID.
-[EL Config]: metadata: 2021-04-23 16:42:12.381--ServerSession(355790875)--Thread(Thread[main,5,main])--The collection table name for the basic collection/map mapping [field apelidos] is being defaulted to: Pessoa_APELIDOS.
-[EL Config]: metadata: 2021-04-23 16:42:12.381--ServerSession(355790875)--Thread(Thread[main,5,main])--The primary key column name for the mapping element [field apelidos] is being defaulted to: ID.
-[EL Config]: metadata: 2021-04-23 16:42:12.382--ServerSession(355790875)--Thread(Thread[main,5,main])--The foreign key column name for the mapping element [apelidos] is being defaulted to: Pessoa_ID.
-[EL Config]: metadata: 2021-04-23 16:42:12.383--ServerSession(355790875)--Thread(Thread[main,5,main])--The value column name for the basic collection/map mapping element mapping element [apelidos] is being defaulted to: APELIDOS.
-[EL Fine]: metadata: 2021-04-23 16:42:12.383--Thread(Thread[main,5,main])--java.lang.ClassNotFoundException: java.util.Listjava.lang.String
-[EL Config]: metadata: 2021-04-23 16:42:12.385--ServerSession(355790875)--Thread(Thread[main,5,main])--The primary key column name for the mapping element [field viagens] is being defaulted to: ID.
-[EL Config]: metadata: 2021-04-23 16:42:12.387--ServerSession(355790875)--Thread(Thread[main,5,main])--The join table name for the many to many mapping [field participantes] is being defaulted to: REUNIAO_PESSOA.
-[EL Config]: metadata: 2021-04-23 16:42:12.388--ServerSession(355790875)--Thread(Thread[main,5,main])--The source primary key column name for the many to many mapping [field participantes] is being defaulted to: DATAHORA.
-[EL Config]: metadata: 2021-04-23 16:42:12.388--ServerSession(355790875)--Thread(Thread[main,5,main])--The source foreign key column name for the many to many mapping [participantes] is being defaulted to: reunioes_DATAHORA.
-[EL Config]: metadata: 2021-04-23 16:42:12.388--ServerSession(355790875)--Thread(Thread[main,5,main])--The target primary key column name for the many to many mapping [field participantes] is being defaulted to: ID.
-[EL Config]: metadata: 2021-04-23 16:42:12.388--ServerSession(355790875)--Thread(Thread[main,5,main])--The target foreign key column name for the many to many mapping [participantes] is being defaulted to: participantes_ID.
-[EL Config]: metadata: 2021-04-23 16:42:12.391--ServerSession(355790875)--Thread(Thread[main,5,main])--The primary key column name for the mapping element [field pessoa] is being defaulted to: ID.
-[EL Config]: metadata: 2021-04-23 16:42:12.391--ServerSession(355790875)--Thread(Thread[main,5,main])--The foreign key column name for the mapping element [pessoa] is being defaulted to: PESSOA_ID.
-[EL Info]: 2021-04-23 16:42:12.466--ServerSession(355790875)--Thread(Thread[main,5,main])--EclipseLink, version: Eclipse Persistence Services - 2.7.8.v20201217-ecdf3c32c4
-[EL Fine]: connection: 2021-04-23 16:42:12.728--Thread(Thread[main,5,main])--Detected database platform: org.eclipse.persistence.platform.database.PostgreSQLPlatform
-[EL Fine]: connection: 2021-04-23 16:42:12.735--ServerSession(355790875)--Connection(405896924)--Thread(Thread[main,5,main])--connecting(DatabaseLogin(
+[EL Fine]: server: 2021-05-05 20:54:43.703--Thread(Thread[main,5,main])--Configured server platform: org.eclipse.persistence.platform.server.NoServerPlatform
+[EL Config]: metadata: 2021-05-05 20:54:44.098--ServerSession(1100767002)--Thread(Thread[main,5,main])--The access type for the persistent class [class modelo.Assunto] is set to [FIELD].
+[EL Config]: metadata: 2021-05-05 20:54:44.163--ServerSession(1100767002)--Thread(Thread[main,5,main])--The target entity (reference) class for the many to many mapping element [field videos] is being defaulted to: class modelo.Video.
+[EL Config]: metadata: 2021-05-05 20:54:44.171--ServerSession(1100767002)--Thread(Thread[main,5,main])--The access type for the persistent class [class modelo.Visualizacao] is set to [FIELD].
+[EL Config]: metadata: 2021-05-05 20:54:44.18--ServerSession(1100767002)--Thread(Thread[main,5,main])--The target entity (reference) class for the many to one mapping element [field usuario] is being defaulted to: class modelo.Usuario.
+[EL Config]: metadata: 2021-05-05 20:54:44.181--ServerSession(1100767002)--Thread(Thread[main,5,main])--The target entity (reference) class for the many to one mapping element [field video] is being defaulted to: class modelo.Video.
+[EL Config]: metadata: 2021-05-05 20:54:44.184--ServerSession(1100767002)--Thread(Thread[main,5,main])--The access type for the persistent class [class modelo.Video] is set to [FIELD].
+[EL Config]: metadata: 2021-05-05 20:54:44.186--ServerSession(1100767002)--Thread(Thread[main,5,main])--The target entity (reference) class for the one to many mapping element [field visualizacoes] is being defaulted to: class modelo.Visualizacao.
+[EL Config]: metadata: 2021-05-05 20:54:44.187--ServerSession(1100767002)--Thread(Thread[main,5,main])--The target entity (reference) class for the many to many mapping element [field assuntos] is being defaulted to: class modelo.Assunto.
+[EL Config]: metadata: 2021-05-05 20:54:44.188--ServerSession(1100767002)--Thread(Thread[main,5,main])--The access type for the persistent class [class modelo.Usuario] is set to [FIELD].
+[EL Config]: metadata: 2021-05-05 20:54:44.19--ServerSession(1100767002)--Thread(Thread[main,5,main])--The target entity (reference) class for the one to many mapping element [field visualizacoes] is being defaulted to: class modelo.Visualizacao.
+[EL Config]: metadata: 2021-05-05 20:54:44.192--ServerSession(1100767002)--Thread(Thread[main,5,main])--The alias name for the entity class [class modelo.Assunto] is being defaulted to: Assunto.
+[EL Config]: metadata: 2021-05-05 20:54:44.224--ServerSession(1100767002)--Thread(Thread[main,5,main])--The column name for element [palavra] is being defaulted to: PALAVRA.
+[EL Config]: metadata: 2021-05-05 20:54:44.227--ServerSession(1100767002)--Thread(Thread[main,5,main])--The column name for element [id] is being defaulted to: ID.
+[EL Config]: metadata: 2021-05-05 20:54:44.231--ServerSession(1100767002)--Thread(Thread[main,5,main])--The column name for element [versao] is being defaulted to: VERSAO.
+[EL Config]: metadata: 2021-05-05 20:54:44.233--ServerSession(1100767002)--Thread(Thread[main,5,main])--The alias name for the entity class [class modelo.Visualizacao] is being defaulted to: Visualizacao.
+[EL Config]: metadata: 2021-05-05 20:54:44.234--ServerSession(1100767002)--Thread(Thread[main,5,main])--The table name for entity [class modelo.Visualizacao] is being defaulted to: VISUALIZACAO.
+[EL Config]: metadata: 2021-05-05 20:54:44.235--ServerSession(1100767002)--Thread(Thread[main,5,main])--The column name for element [id] is being defaulted to: ID.
+[EL Config]: metadata: 2021-05-05 20:54:44.236--ServerSession(1100767002)--Thread(Thread[main,5,main])--The column name for element [datahora] is being defaulted to: DATAHORA.
+[EL Config]: metadata: 2021-05-05 20:54:44.237--ServerSession(1100767002)--Thread(Thread[main,5,main])--The column name for element [nota] is being defaulted to: NOTA.
+[EL Config]: metadata: 2021-05-05 20:54:44.237--ServerSession(1100767002)--Thread(Thread[main,5,main])--The column name for element [versao] is being defaulted to: VERSAO.
+[EL Config]: metadata: 2021-05-05 20:54:44.24--ServerSession(1100767002)--Thread(Thread[main,5,main])--The alias name for the entity class [class modelo.Video] is being defaulted to: Video.
+[EL Config]: metadata: 2021-05-05 20:54:44.242--ServerSession(1100767002)--Thread(Thread[main,5,main])--The column name for element [link] is being defaulted to: LINK.
+[EL Config]: metadata: 2021-05-05 20:54:44.242--ServerSession(1100767002)--Thread(Thread[main,5,main])--The column name for element [nome] is being defaulted to: NOME.
+[EL Config]: metadata: 2021-05-05 20:54:44.243--ServerSession(1100767002)--Thread(Thread[main,5,main])--The column name for element [id] is being defaulted to: ID.
+[EL Config]: metadata: 2021-05-05 20:54:44.248--ServerSession(1100767002)--Thread(Thread[main,5,main])--The column name for element [media] is being defaulted to: MEDIA.
+[EL Config]: metadata: 2021-05-05 20:54:44.249--ServerSession(1100767002)--Thread(Thread[main,5,main])--The column name for element [dataHora] is being defaulted to: DATAHORA.
+[EL Config]: metadata: 2021-05-05 20:54:44.25--ServerSession(1100767002)--Thread(Thread[main,5,main])--The column name for element [versao] is being defaulted to: VERSAO.
+[EL Config]: metadata: 2021-05-05 20:54:44.25--ServerSession(1100767002)--Thread(Thread[main,5,main])--The alias name for the entity class [class modelo.Usuario] is being defaulted to: Usuario.
+[EL Config]: metadata: 2021-05-05 20:54:44.254--ServerSession(1100767002)--Thread(Thread[main,5,main])--The column name for element [dataNasc] is being defaulted to: DATANASC.
+[EL Config]: metadata: 2021-05-05 20:54:44.261--ServerSession(1100767002)--Thread(Thread[main,5,main])--The column name for element [id] is being defaulted to: ID.
+[EL Config]: metadata: 2021-05-05 20:54:44.262--ServerSession(1100767002)--Thread(Thread[main,5,main])--The column name for element [email] is being defaulted to: EMAIL.
+[EL Config]: metadata: 2021-05-05 20:54:44.263--ServerSession(1100767002)--Thread(Thread[main,5,main])--The column name for element [versao] is being defaulted to: VERSAO.
+[EL Config]: metadata: 2021-05-05 20:54:44.314--ServerSession(1100767002)--Thread(Thread[main,5,main])--The join table name for the many to many mapping [field videos] is being defaulted to: assunto_video.
+[EL Config]: metadata: 2021-05-05 20:54:44.322--ServerSession(1100767002)--Thread(Thread[main,5,main])--The source primary key column name for the many to many mapping [field videos] is being defaulted to: ID.
+[EL Config]: metadata: 2021-05-05 20:54:44.325--ServerSession(1100767002)--Thread(Thread[main,5,main])--The source foreign key column name for the many to many mapping [videos] is being defaulted to: assuntos_ID.
+[EL Config]: metadata: 2021-05-05 20:54:44.326--ServerSession(1100767002)--Thread(Thread[main,5,main])--The target primary key column name for the many to many mapping [field videos] is being defaulted to: ID.
+[EL Config]: metadata: 2021-05-05 20:54:44.326--ServerSession(1100767002)--Thread(Thread[main,5,main])--The target foreign key column name for the many to many mapping [videos] is being defaulted to: videos_ID.
+[EL Config]: metadata: 2021-05-05 20:54:44.341--ServerSession(1100767002)--Thread(Thread[main,5,main])--The primary key column name for the mapping element [field usuario] is being defaulted to: ID.
+[EL Config]: metadata: 2021-05-05 20:54:44.343--ServerSession(1100767002)--Thread(Thread[main,5,main])--The foreign key column name for the mapping element [usuario] is being defaulted to: USUARIO_ID.
+[EL Config]: metadata: 2021-05-05 20:54:44.344--ServerSession(1100767002)--Thread(Thread[main,5,main])--The primary key column name for the mapping element [field video] is being defaulted to: ID.
+[EL Config]: metadata: 2021-05-05 20:54:44.344--ServerSession(1100767002)--Thread(Thread[main,5,main])--The foreign key column name for the mapping element [video] is being defaulted to: VIDEO_ID.
+[EL Info]: 2021-05-05 20:54:44.677--ServerSession(1100767002)--Thread(Thread[main,5,main])--EclipseLink, version: Eclipse Persistence Services - 2.7.8.v20201217-ecdf3c32c4
+[EL Fine]: connection: 2021-05-05 20:54:46.005--Thread(Thread[main,5,main])--Detected database platform: org.eclipse.persistence.platform.database.PostgreSQLPlatform
+[EL Fine]: connection: 2021-05-05 20:54:46.058--ServerSession(1100767002)--Connection(858204589)--Thread(Thread[main,5,main])--connecting(DatabaseLogin(
 	platform=>PostgreSQLPlatform
 	user name=> "postgres"
-	datasource URL=> "jdbc:postgresql://127.0.0.1:5432/agenda"
+	datasource URL=> "jdbc:postgresql://127.0.0.1
+:5432/agenda"
 ))
-[EL Config]: connection: 2021-04-23 16:42:12.833--ServerSession(355790875)--Connection(1309335839)--Thread(Thread[main,5,main])--Connected: jdbc:postgresql://127.0.0.1:5432/agenda
+[EL Config]: connection: 2021-05-05 20:54:46.171--ServerSession(1100767002)--Connection(1976752685)--Thread(Thread[main,5,main])--Connected: jdbc:postgresql://127.0.0.1
+:5432/agenda
 	User: postgres
-	Database: PostgreSQL  Version: 13.2
+	Database: PostgreSQL  Version: 11.7 (Ubuntu 11.7-2.pgdg18.04+1)
 	Driver: PostgreSQL JDBC Driver  Version: 42.2.19
-[EL Fine]: connection: 2021-04-23 16:42:12.876--ServerSession(355790875)--Thread(Thread[main,5,main])--/file:/C:/Users/faust/Dropbox/aula-copratilhada/POB/ProjetosBDNC-MOR - novo/AgendaJPA-dao/target/classes/_eclipselink-postgres_url=jdbc:postgresql://127.0.0.1:5432/agenda login successful
-[EL Fine]: sql: 2021-04-23 16:42:13.06--ServerSession(355790875)--Connection(1309335839)--Thread(Thread[main,5,main])--SELECT ID, DTNASCIMENTO, FOTO, NOME, SEXO FROM PESSOA WHERE (NOME = ?)
-	bind => [joao]
-[EL Fine]: sql: 2021-04-23 16:42:13.066--ServerSession(355790875)--Connection(1309335839)--Thread(Thread[main,5,main])--SELECT ID, NUMERO, PESSOA_ID FROM TELEFONE WHERE (PESSOA_ID = ?)
-	bind => [1]
-[EL Fine]: sql: 2021-04-23 16:42:13.074--ClientSession(1429616542)--Connection(1309335839)--Thread(Thread[main,5,main])--UPDATE PESSOA SET SEXO = ? WHERE (ID = ?)
-	bind => [MASCULINO, 1]
-[EL Fine]: sql: 2021-04-23 16:42:13.078--ServerSession(355790875)--Connection(1309335839)--Thread(Thread[main,5,main])--SELECT ID, DTNASCIMENTO, FOTO, NOME, SEXO FROM PESSOA WHERE (NOME = ?)
-	bind => [maria]
-[EL Fine]: sql: 2021-04-23 16:42:13.078--ServerSession(355790875)--Connection(1309335839)--Thread(Thread[main,5,main])--SELECT ID, NUMERO, PESSOA_ID FROM TELEFONE WHERE (PESSOA_ID = ?)
-	bind => [2]
-[EL Fine]: sql: 2021-04-23 16:42:13.081--ClientSession(2086068243)--Connection(1309335839)--Thread(Thread[main,5,main])--UPDATE PESSOA SET SEXO = ? WHERE (ID = ?)
-	bind => [FEMININO, 2]
-[EL Fine]: sql: 2021-04-23 16:42:13.082--ServerSession(355790875)--Connection(1309335839)--Thread(Thread[main,5,main])--SELECT ID, DTNASCIMENTO, FOTO, NOME, SEXO FROM PESSOA WHERE (NOME = ?)
-	bind => [jose]
-[EL Fine]: sql: 2021-04-23 16:42:13.083--ServerSession(355790875)--Connection(1309335839)--Thread(Thread[main,5,main])--SELECT ID, NUMERO, PESSOA_ID FROM TELEFONE WHERE (PESSOA_ID = ?)
-	bind => [3]
-[EL Fine]: sql: 2021-04-23 16:42:13.085--ClientSession(1488946768)--Connection(1309335839)--Thread(Thread[main,5,main])--UPDATE PESSOA SET SEXO = ? WHERE (ID = ?)
-	bind => [MASCULINO, 3]
-[EL Fine]: sql: 2021-04-23 16:42:13.086--ServerSession(355790875)--Connection(1309335839)--Thread(Thread[main,5,main])--SELECT ID, DTNASCIMENTO, FOTO, NOME, SEXO FROM PESSOA WHERE (NOME = ?)
-	bind => [paulo]
-[EL Fine]: sql: 2021-04-23 16:42:13.087--ServerSession(355790875)--Connection(1309335839)--Thread(Thread[main,5,main])--SELECT ID, NUMERO, PESSOA_ID FROM TELEFONE WHERE (PESSOA_ID = ?)
-	bind => [4]
-[EL Fine]: sql: 2021-04-23 16:42:13.089--ClientSession(1482748887)--Connection(1309335839)--Thread(Thread[main,5,main])--UPDATE PESSOA SET SEXO = ? WHERE (ID = ?)
-	bind => [MASCULINO, 4]
-[EL Fine]: sql: 2021-04-23 16:42:13.165--ServerSession(355790875)--Connection(1309335839)--Thread(Thread[main,5,main])--SELECT ID, DTNASCIMENTO, FOTO, NOME, SEXO FROM PESSOA WHERE (NOME = ?)
-	bind => [joao]
-[EL Fine]: sql: 2021-04-23 16:42:13.166--ClientSession(727860268)--Connection(1309335839)--Thread(Thread[main,5,main])--UPDATE PESSOA SET FOTO = ? WHERE (ID = ?)
-	bind => [[B@28a0fd6c, 1]
-[EL Fine]: sql: 2021-04-23 16:42:13.179--ServerSession(355790875)--Connection(1309335839)--Thread(Thread[main,5,main])--SELECT ID, DTNASCIMENTO, FOTO, NOME, SEXO FROM PESSOA WHERE (NOME = ?)
-	bind => [maria]
-[EL Fine]: sql: 2021-04-23 16:42:13.181--ClientSession(809383315)--Connection(1309335839)--Thread(Thread[main,5,main])--UPDATE PESSOA SET FOTO = ? WHERE (ID = ?)
-	bind => [[B@5d5d9e5, 2]
-[EL Fine]: sql: 2021-04-23 16:42:13.19--ServerSession(355790875)--Connection(1309335839)--Thread(Thread[main,5,main])--SELECT ID, DTNASCIMENTO, FOTO, NOME, SEXO FROM PESSOA WHERE (NOME = ?)
-	bind => [jose]
-[EL Fine]: sql: 2021-04-23 16:42:13.191--ClientSession(1134202713)--Connection(1309335839)--Thread(Thread[main,5,main])--UPDATE PESSOA SET FOTO = ? WHERE (ID = ?)
-	bind => [[B@5fb97279, 3]
-[EL Fine]: sql: 2021-04-23 16:42:13.192--ServerSession(355790875)--Connection(1309335839)--Thread(Thread[main,5,main])--SELECT ID, DTNASCIMENTO, FOTO, NOME, SEXO FROM PESSOA WHERE (NOME = ?)
-	bind => [joao]
-[EL Fine]: sql: 2021-04-23 16:42:13.194--ServerSession(355790875)--Connection(1309335839)--Thread(Thread[main,5,main])--SELECT t0.APELIDOS FROM Pessoa_APELIDOS t0 WHERE (t0.Pessoa_ID = ?)
-	bind => [1]
-[EL Fine]: sql: 2021-04-23 16:42:13.196--ClientSession(1228798862)--Connection(1309335839)--Thread(Thread[main,5,main])--INSERT INTO Pessoa_APELIDOS (Pessoa_ID, APELIDOS) VALUES (?, ?)
-	bind => [1, joaozinho]
-[EL Fine]: sql: 2021-04-23 16:42:13.197--ClientSession(1228798862)--Connection(1309335839)--Thread(Thread[main,5,main])--INSERT INTO Pessoa_APELIDOS (Pessoa_ID, APELIDOS) VALUES (?, ?)
-	bind => [1, jo]
-[EL Fine]: sql: 2021-04-23 16:42:13.198--ClientSession(1228798862)--Connection(1309335839)--Thread(Thread[main,5,main])--INSERT INTO Pessoa_APELIDOS (Pessoa_ID, APELIDOS) VALUES (?, ?)
-	bind => [1, jojo]
-[EL Fine]: sql: 2021-04-23 16:42:13.199--ServerSession(355790875)--Connection(1309335839)--Thread(Thread[main,5,main])--SELECT ID, DTNASCIMENTO, FOTO, NOME, SEXO FROM PESSOA WHERE (NOME = ?)
-	bind => [maria]
-[EL Fine]: sql: 2021-04-23 16:42:13.2--ServerSession(355790875)--Connection(1309335839)--Thread(Thread[main,5,main])--SELECT t0.APELIDOS FROM Pessoa_APELIDOS t0 WHERE (t0.Pessoa_ID = ?)
-	bind => [2]
-[EL Fine]: sql: 2021-04-23 16:42:13.201--ClientSession(1076966140)--Connection(1309335839)--Thread(Thread[main,5,main])--INSERT INTO Pessoa_APELIDOS (Pessoa_ID, APELIDOS) VALUES (?, ?)
-	bind => [2, mary]
-[EL Fine]: sql: 2021-04-23 16:42:13.201--ClientSession(1076966140)--Connection(1309335839)--Thread(Thread[main,5,main])--INSERT INTO Pessoa_APELIDOS (Pessoa_ID, APELIDOS) VALUES (?, ?)
-	bind => [2, mar]
-[EL Fine]: sql: 2021-04-23 16:42:13.202--ServerSession(355790875)--Connection(1309335839)--Thread(Thread[main,5,main])--SELECT ID, DTNASCIMENTO, FOTO, NOME, SEXO FROM PESSOA WHERE (NOME = ?)
-	bind => [jose]
-[EL Fine]: sql: 2021-04-23 16:42:13.219--ServerSession(355790875)--Connection(1309335839)--Thread(Thread[main,5,main])--SELECT t0.APELIDOS FROM Pessoa_APELIDOS t0 WHERE (t0.Pessoa_ID = ?)
-	bind => [3]
-[EL Fine]: sql: 2021-04-23 16:42:13.22--ClientSession(907815246)--Connection(1309335839)--Thread(Thread[main,5,main])--INSERT INTO Pessoa_APELIDOS (Pessoa_ID, APELIDOS) VALUES (?, ?)
-	bind => [3, zezinho]
-[EL Fine]: sql: 2021-04-23 16:42:13.22--ClientSession(907815246)--Connection(1309335839)--Thread(Thread[main,5,main])--INSERT INTO Pessoa_APELIDOS (Pessoa_ID, APELIDOS) VALUES (?, ?)
-	bind => [3, zezao]
-[EL Fine]: sql: 2021-04-23 16:42:13.222--ServerSession(355790875)--Connection(1309335839)--Thread(Thread[main,5,main])--SELECT ID, DTNASCIMENTO, FOTO, NOME, SEXO FROM PESSOA WHERE (NOME = ?)
-	bind => [paulo]
-[EL Fine]: sql: 2021-04-23 16:42:13.223--ServerSession(355790875)--Connection(1309335839)--Thread(Thread[main,5,main])--SELECT t0.APELIDOS FROM Pessoa_APELIDOS t0 WHERE (t0.Pessoa_ID = ?)
-	bind => [4]
-[EL Fine]: sql: 2021-04-23 16:42:13.224--ClientSession(2021053848)--Connection(1309335839)--Thread(Thread[main,5,main])--INSERT INTO Pessoa_APELIDOS (Pessoa_ID, APELIDOS) VALUES (?, ?)
-	bind => [4, paulao]
-[EL Fine]: sql: 2021-04-23 16:42:13.225--ServerSession(355790875)--Connection(1309335839)--Thread(Thread[main,5,main])--SELECT ID, DTNASCIMENTO, FOTO, NOME, SEXO FROM PESSOA WHERE (NOME = ?)
-	bind => [paulo]
-[EL Fine]: sql: 2021-04-23 16:42:13.227--ClientSession(1016162524)--Connection(1309335839)--Thread(Thread[main,5,main])--UPDATE PESSOA SET NOME = ? WHERE (ID = ?)
-	bind => [paula, 4]
-[EL Fine]: sql: 2021-04-23 16:42:13.228--ServerSession(355790875)--Connection(1309335839)--Thread(Thread[main,5,main])--SELECT ID, DTNASCIMENTO, FOTO, NOME, SEXO FROM PESSOA WHERE (NOME = ?)
-	bind => [paula]
-[EL Fine]: sql: 2021-04-23 16:42:13.229--ClientSession(938199512)--Connection(1309335839)--Thread(Thread[main,5,main])--UPDATE PESSOA SET NOME = ? WHERE (ID = ?)
-	bind => [paulo, 4]
-[EL Fine]: sql: 2021-04-23 16:42:13.231--ServerSession(355790875)--Connection(1309335839)--Thread(Thread[main,5,main])--SELECT ID, NUMERO, PESSOA_ID FROM TELEFONE WHERE (NUMERO = ?)
-	bind => [988880000]
-[EL Fine]: sql: 2021-04-23 16:42:13.232--ServerSession(355790875)--Connection(1309335839)--Thread(Thread[main,5,main])--SELECT ID, NUMERO, PESSOA_ID FROM TELEFONE WHERE (NUMERO = ?)
-	bind => [999999999]
-[EL Fine]: sql: 2021-04-23 16:42:13.235--ClientSession(145066402)--Connection(1309335839)--Thread(Thread[main,5,main])--UPDATE TELEFONE SET NUMERO = ? WHERE (ID = ?)
-	bind => [999999999, 1]
-[EL Fine]: connection: 2021-04-23 16:42:13.236--ServerSession(355790875)--Connection(1309335839)--Thread(Thread[main,5,main])--disconnect
-[EL Fine]: connection: 2021-04-23 16:42:13.237--ServerSession(355790875)--Thread(Thread[main,5,main])--/file:/C:/Users/faust/Dropbox/aula-copratilhada/POB/ProjetosBDNC-MOR - novo/AgendaJPA-dao/target/classes/_eclipselink-postgres_url=jdbc:postgresql://127.0.0.1:5432/agenda logout successful
-[EL Fine]: connection: 2021-04-23 16:42:13.237--ServerSession(355790875)--Connection(405896924)--Thread(Thread[main,5,main])--disconnect
+[EL Fine]: connection: 2021-05-05 20:54:46.49--ServerSession(1100767002)--Thread(Thread[main,5,main])--/file:/home/guilherme/eclipse-workspace/projeto-3-pob/target/classes/_eclipselink-postgres_url=jdbc:postgresql://127.0.0.1
+:5432/agenda login successful
+[EL Fine]: sql: 2021-05-05 20:54:46.877--ServerSession(1100767002)--Connection(1976752685)--Thread(Thread[main,5,main])--CREATE TABLE VISUALIZACAO (ID  SERIAL NOT NULL, DATAHORA DATETIME, NOTA INTEGER, VERSAO VARCHAR(255), USUARIO_ID INTEGER, VIDEO_ID INTEGER, PRIMARY KEY (ID))
+[EL Fine]: sql: 2021-05-05 20:54:46.881--ServerSession(1100767002)--Thread(Thread[main,5,main])--SELECT 1
+[EL Warning]: 2021-05-05 20:54:46.884--ServerSession(1100767002)--Thread(Thread[main,5,main])--Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.7.8.v20201217-ecdf3c32c4): org.eclipse.persistence.exceptions.DatabaseException
+Internal Exception: org.postgresql.util.PSQLException: ERROR: type "datetime" does not exist
+  Posição: 58
+Error Code: 0
+Call: CREATE TABLE VISUALIZACAO (ID  SERIAL NOT NULL, DATAHORA DATETIME, NOTA INTEGER, VERSAO VARCHAR(255), USUARIO_ID INTEGER, VIDEO_ID INTEGER, PRIMARY KEY (ID))
+Query: DataModifyQuery(sql="CREATE TABLE VISUALIZACAO (ID  SERIAL NOT NULL, DATAHORA DATETIME, NOTA INTEGER, VERSAO VARCHAR(255), USUARIO_ID INTEGER, VIDEO_ID INTEGER, PRIMARY KEY (ID))")
+[EL Fine]: sql: 2021-05-05 20:54:46.899--ServerSession(1100767002)--Connection(1976752685)--Thread(Thread[main,5,main])--ALTER TABLE VISUALIZACAO ADD CONSTRAINT FK_VISUALIZACAO_USUARIO_ID FOREIGN KEY (USUARIO_ID) REFERENCES usuario (ID)
+[EL Fine]: sql: 2021-05-05 20:54:46.906--ServerSession(1100767002)--Thread(Thread[main,5,main])--SELECT 1
+[EL Warning]: 2021-05-05 20:54:46.913--ServerSession(1100767002)--Thread(Thread[main,5,main])--Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.7.8.v20201217-ecdf3c32c4): org.eclipse.persistence.exceptions.DatabaseException
+Internal Exception: org.postgresql.util.PSQLException: ERROR: relation "visualizacao" does not exist
+Error Code: 0
+Call: ALTER TABLE VISUALIZACAO ADD CONSTRAINT FK_VISUALIZACAO_USUARIO_ID FOREIGN KEY (USUARIO_ID) REFERENCES usuario (ID)
+Query: DataModifyQuery(sql="ALTER TABLE VISUALIZACAO ADD CONSTRAINT FK_VISUALIZACAO_USUARIO_ID FOREIGN KEY (USUARIO_ID) REFERENCES usuario (ID)")
+[EL Fine]: sql: 2021-05-05 20:54:47.778--ServerSession(1100767002)--Connection(1976752685)--Thread(Thread[main,5,main])--SELECT ID, DATAHORA, LINK, MEDIA, NOME, VERSAO FROM video WHERE (LINK = ?)
+	bind => [https://www.youtube.com/watch?v=1u2qu-EmIRc]
+[EL Fine]: sql: 2021-05-05 20:54:47.858--ClientSession(961859592)--Connection(1976752685)--Thread(Thread[main,5,main])--INSERT INTO video (DATAHORA, LINK, MEDIA, NOME, VERSAO) VALUES (?, ?, ?, ?, ?)
+	bind => [null, https://www.youtube.com/watch?v=1u2qu-EmIRc, 0.0, Git - Lecture 0 - CS50's Web Programming with Python and JavaScript 2018, null]
+[EL Fine]: sql: 2021-05-05 20:54:47.899--ClientSession(961859592)--Connection(1976752685)--Thread(Thread[main,5,main])--select lastval()
+[EL Fine]: sql: 2021-05-05 20:54:48.05--ServerSession(1100767002)--Connection(1976752685)--Thread(Thread[main,5,main])--SELECT ID, DATAHORA, LINK, MEDIA, NOME, VERSAO FROM video WHERE (LINK = ?)
+	bind => [https://www.youtube.com/watch?v=6i-_R5cAcEc]
+[EL Fine]: sql: 2021-05-05 20:54:48.055--ClientSession(1959708563)--Connection(1976752685)--Thread(Thread[main,5,main])--INSERT INTO video (DATAHORA, LINK, MEDIA, NOME, VERSAO) VALUES (?, ?, ?, ?, ?)
+	bind => [null, https://www.youtube.com/watch?v=6i-_R5cAcEc, 0.0, Curso POO Java #04b​ - Métodos Getter, Setter e Construtor, null]
+[EL Fine]: sql: 2021-05-05 20:54:48.058--ClientSession(1959708563)--Connection(1976752685)--Thread(Thread[main,5,main])--select lastval()
+[EL Fine]: sql: 2021-05-05 20:54:48.091--ServerSession(1100767002)--Connection(1976752685)--Thread(Thread[main,5,main])--SELECT ID, DATAHORA, LINK, MEDIA, NOME, VERSAO FROM video WHERE (LINK = ?)
+	bind => [https://www.youtube.com/watch?v=XLr-igSIUU0&list=PLbaXFvl9CSyUfTbVhyHItpiuONlZCW9ZU&index=3]
+[EL Fine]: sql: 2021-05-05 20:54:48.095--ClientSession(467632528)--Connection(1976752685)--Thread(Thread[main,5,main])--INSERT INTO video (DATAHORA, LINK, MEDIA, NOME, VERSAO) VALUES (?, ?, ?, ?, ?)
+	bind => [null, https://www.youtube.com/watch?v=XLr-igSIUU0&list=PLbaXFvl9CSyUfTbVhyHItpiuONlZCW9ZU&index=3, 0.0, Programação para Web I - Inserindo Angular Material - Angular aula 2, null]
+[EL Fine]: sql: 2021-05-05 20:54:48.105--ClientSession(467632528)--Connection(1976752685)--Thread(Thread[main,5,main])--select lastval()
+[EL Fine]: connection: 2021-05-05 20:54:48.144--ServerSession(1100767002)--Connection(1976752685)--Thread(Thread[main,5,main])--disconnect
+[EL Fine]: connection: 2021-05-05 20:54:48.145--ServerSession(1100767002)--Thread(Thread[main,5,main])--/file:/home/guilherme/eclipse-workspace/projeto-3-pob/target/classes/_eclipselink-postgres_url=jdbc:postgresql://127.0.0.1
+:5432/agenda logout successful
+[EL Fine]: connection: 2021-05-05 20:54:48.146--ServerSession(1100767002)--Connection(858204589)--Thread(Thread[main,5,main])--disconnect

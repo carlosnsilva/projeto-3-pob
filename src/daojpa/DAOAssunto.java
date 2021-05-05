@@ -11,18 +11,19 @@ public class DAOAssunto  extends DAO<Assunto> {
 	
 	public Assunto read (Object chave){
 		try{
-			String nome = (String) chave;
-			TypedQuery<Assunto> q = manager.createQuery("SELECT * FROM ASSUNTO WHERE A.PALAVRA=:n", Assunto.class);
-			q.setParameter("n", nome);
+			String palavra = (String) chave;
+			TypedQuery<Assunto> q = manager.createQuery("select a from Assunto a where a.palavra=:p", Assunto.class);
+			q.setParameter("p", palavra);
 			return q.getSingleResult();
 		}catch(NoResultException e){
 			return null;
 		}
 	}
-	
+	/*
 	public List<Assunto> readAll(){
 		TypedQuery<Assunto> q = manager.createQuery("SELECT * FROM ASSUNTO ORDER BY ID", Assunto.class);
 		return q.getResultList();
 	}
+	*/
 	
 }

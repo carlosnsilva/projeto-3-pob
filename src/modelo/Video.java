@@ -1,45 +1,45 @@
 package modelo;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
+//import java.time.LocalDateTime;
+//import java.time.format.DateTimeFormatter;
+//import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="video")
 public class Video {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 	private String link;
 	private String nome;
 	private double media;
 	private String dataHora;
 	private String versao;
 	
-	//Relacionamento bidirecional muitos para muitos
-	@ManyToMany(mappedBy="assuntos", 
-				cascade={CascadeType.PERSIST,CascadeType.MERGE}) 	
+	@ManyToMany(mappedBy="videos", 
+				cascade={CascadeType.ALL}) 	
 	private List<Assunto> assuntos = new ArrayList<>();
 	
 	
-	@OneToMany(mappedBy="visualizacoes", 
-			cascade=CascadeType.ALL, 	
-			orphanRemoval=true,			//default � false
-			fetch=FetchType.EAGER) 		//default � LAZY
+	@OneToMany(mappedBy="video", 
+			cascade={CascadeType.ALL}) 	
 	private List<Visualizacao> visualizacoes = new ArrayList<>();
 
 	public Video () {};
 	
-	public Video(String link, String nome, String palavra, String dataStr) {
+	public Video(String link, String nome) {
 		this.link = link;
 		this.nome = nome;
-		this.assuntos.add(new Assunto(palavra));
-		this.dataHora = dataStr;
 	}
 	
 	public String getVersao() {
