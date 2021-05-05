@@ -1,69 +1,71 @@
 package modelo;
-
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Visualizacao {
-	@Id
+	@Id		
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(columnDefinition = "DATE")
-	private LocalDateTime dataHora = LocalDateTime.now();
+	@Column(columnDefinition = "DATETIME")	//columnDefinition="TIMESTAMP"
+	private LocalDateTime datahora = LocalDateTime.now();
 	
 	private int nota;
 	
+	@ManyToOne		
+	private Usuario usuario;			//lado inverso do relacionamento
+	
+	@ManyToOne
 	private Video video;
-	private Usuario usuario;
 	
-	public Visualizacao() {}
+	public Visualizacao () {};
 	
-	public Visualizacao(int nota, Video video, Usuario usuario) {
+	public Visualizacao(int nota, Usuario usuario, Video video) {
 		this.nota = nota;
-		this.video = video;
 		this.usuario = usuario;
+		this.video = video;
 	}
 	
 	public int getId() {
-		return id;
+		return this.id;
 	}
-
-	public Video getVideo() {
-		return video;
+	
+	public String getDataHora() {
+		return this.datahora.format(DateTimeFormatter.ofPattern("dd/MM/yyy hh:mm:ss"));
 	}
-
-	public void setVideo(Video video) {
-		this.video = video;
+	
+	public String getUsuario() {
+		return this.usuario.getEmail();
 	}
-
-	public Usuario getUsuario() {
-		return usuario;
+	
+	public String getVideo() {
+		return this.video.getLink();
 	}
-
+	
+	public int getNota() {
+		return this.nota;
+	}
+	
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+		
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	@Override
+	public String toString() {
+		return "[id=" + id + 
+				", datahora=" + datahora.format(DateTimeFormatter.ofPattern("dd/MM/yyy hh:mm:ss")) + 
+				", nota=" + nota +
+				"\n usuario=" + usuario.getEmail() + ", video=" + video.getNome() + "]"; 
 	}
 
-	public LocalDateTime getDataHora() {
-		return dataHora;
-	}
-
-	public void setDataHora(LocalDateTime dataHora) {
-		this.dataHora = dataHora;
-	}
-
-	public int getNota() {
-		return nota;
-	}
-
-	public void setNota(int nota) {
-		this.nota = nota;
-	}
-
+	
 }
