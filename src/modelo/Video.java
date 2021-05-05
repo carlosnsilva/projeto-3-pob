@@ -16,10 +16,10 @@ import javax.persistence.OneToMany;
 public class Video {
 	@Id
 	private String link;
-	
 	private String nome;
 	private double media;
 	private String dataHora;
+	private String versao;
 	
 	//Relacionamento bidirecional muitos para muitos
 	@ManyToMany(mappedBy="assuntos", 
@@ -41,6 +41,39 @@ public class Video {
 		this.assuntos.add(new Assunto(palavra));
 		this.dataHora = dataStr;
 	}
+	
+	public String getVersao() {
+		return versao;
+	}
+
+	public void setVersao(String versao) {
+		this.versao = versao;
+	}
+
+	public void setLink(String link) {
+		this.link = link;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public void setMedia(double media) {
+		this.media = media;
+	}
+
+	public void setDataHora(String dataHora) {
+		this.dataHora = dataHora;
+	}
+
+	public void setAssuntos(List<Assunto> assuntos) {
+		this.assuntos = assuntos;
+	}
+
+	public void setVisualizacoes(List<Visualizacao> visualizacoes) {
+		this.visualizacoes = visualizacoes;
+	}
+
 	
 	public String getNome() {
 		return nome;

@@ -7,6 +7,7 @@ import javax.persistence.TypedQuery;
 import daojpa.*;
 
 import modelo.Video;
+import modelo.Visualizacao;
 
 public class DAOVideo extends DAO<Video> {
 	
@@ -18,7 +19,7 @@ public class DAOVideo extends DAO<Video> {
 	public Video read (Object chave){
 		try{
 			String nome = (String) chave;
-			TypedQuery<Video> q = manager.createQuery("SELECT * FROM VIDEO WHERE A.PALAVRA=:n", Video.class);
+			TypedQuery<Video> q = manager.createQuery("SELECT * FROM VIDEO V WHERE V.NOME=:n", Video.class);
 			q.setParameter("n", nome);
 			return q.getSingleResult();
 		}catch(NoResultException e){
@@ -46,23 +47,30 @@ public class DAOVideo extends DAO<Video> {
 	}
 	
 	public List<Video> consultarVideosPorUsuario(String email){
+		Visualizacao v = daoVisualizacao.VisualizacaoPorUsuario(email);
+		
 		try {
 			TypedQuery<Video> q = manager.createQuery("SELECT * FROM VIDEO V JOIN "
-					+ "VISUALIZACAO VI ON VI.VIDEO=:X = V.NOME=:Y"
+					+ "VISUALIZACAO VI ON VI.VIDEO=:X = V.LINK"
 					+ "JOIN USUARIO u ON U.EMAIL=:Z = VI.USUARIO=:C ", Video.class);
 				q.setParameter("Z",daoUsuario.read(email));
-				q.setParameter("C", daoVisualizacao.VisualizacaoPorUsuario(email));
-				
-				// Montar a lógica para solucionar
-				q.setParameter("Y", daoAssunto.read(assunto));
-				q.setParameter("X", daoVideo.);
-				
-				
+				q.setParameter("C", v.getUsuario());				
+				q.setParameter("X", v.getVideo());
 				return q.getResultList();
 		}catch(NoResultException e) {
 			return null;
 		}
 		
+	}
+	
+	public Video readPorLink(String link){
+		try{
+			TypedQuery<Video> q = manager.createQuery("SELECT * FROM VIDEO V WHERE V.LINK=:n", Video.class);
+			q.setParameter("n", link);
+			return q.getSingleResult();
+		}catch(NoResultException e){
+			return null;
+		}
 	}
 
 }
