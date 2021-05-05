@@ -1,391 +1,161 @@
 package fachada;
 
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
-import java.time.LocalDate;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.List;
 
-import javax.imageio.ImageIO;
-
-import daojpa.DAO;
-import daojpa.DAOPessoa;
-import daojpa.DAOReuniao;
-import daojpa.DAOTelefone;
-import daojpa.DAOViagem;
-import modelo.Pessoa;
-import modelo.Reuniao;
-import modelo.Sexo;
-import modelo.Telefone;
-import modelo.Viagem;
+import daojpa.*;
+import modelo.*;
 
 public class Fachada {
-	private static DAOPessoa daopessoa = new DAOPessoa();  
-	private static DAOTelefone daotelefone = new DAOTelefone();  
-	private static DAOReuniao daoreuniao = new DAOReuniao();  
-	private static DAOViagem daoviagem = new DAOViagem();  
 
-	private static DateTimeFormatter formatadorDT = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-	private static DateTimeFormatter formatadorDTH = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-
-	public static void inicializar(){
+	private static DAOAssunto daoAssunto = new DAOAssunto();
+	private static DAOUsuario daoUsuario = new DAOUsuario();
+	private static DAOVideo daoVideo = new DAOVideo();
+	private static DAOVisualizacao daoVisualizacao = new DAOVisualizacao();
+	
+	private static void iniciar() {
 		DAO.open();
 	}
-	public static void finalizar(){
+	
+	private static void fechar() {
 		DAO.close();
 	}
-
-	public static Pessoa localizarPessoa(String nome) throws  Exception{
-		Pessoa p = daopessoa.read(nome);	
-		if (p==null) {
-			throw new Exception("nome inexistente:" + nome);
-		}
-		return p;
-	}
-
-
-	public static Pessoa criarTelefone(String nome, String numero) throws  Exception{
+	
+	public static Video cadastrarVideo(String link, String nome, String palavra) throws  Exception{
 		DAO.begin();	
-		Pessoa p = daopessoa.read(nome);
-		if(p == null) {
-			p = new Pessoa(nome);
-			daopessoa.create(p);		// criar pessoa
-		}
-
-		Telefone t = daotelefone.read(numero);
-		if (t!=null){
-			DAO.rollback();
-			throw new Exception("criar telefone - numero ja cadastrado:" + numero);
-		}
-		t = new Telefone(numero);
-		p.adicionar(t);
-		daotelefone.create(t);
-		daopessoa.update(p);
-		DAO.commit();
-		return p;
-	}	
-
-	public static void excluirTelefone(String numero) throws Exception {
-		DAO.begin();
-		Telefone t = daotelefone.read(numero);
-		if (t==null) {
-			DAO.rollback();
-			throw new Exception("excluir telefone - numero inexistente:" + numero);
-		}
-		Pessoa p = t.getPessoa();
-		p.remover(t);
-		t.setPessoa(null);
-		daopessoa.update(p);
-		//daotelefone.delete(t);	//orphanRemoval=true
-		DAO.commit();
-	}
-
-	public static void excluirTelefonesFixos(String nome) throws Exception {
-		DAO.begin();
-		Pessoa p = daopessoa.read(nome);
-		if (p==null) {
-			DAO.rollback();	
-			throw new Exception("nome inexistente:" + nome);
-		}
-
-		if(!p.removerFixos()) {
-			DAO.rollback();	
-			throw new Exception("nao encontrou telefone fixo:" + nome);
-		}
-		daopessoa.update(p);
-		DAO.commit();
-	}
-
-	public static Reuniao criarReuniao(String datahora, String assunto, String... nomes) 
-			throws Exception {
-		LocalDateTime dt;
-		try {
-			dt = LocalDateTime.parse(datahora, formatadorDTH);
-		}
-		catch(DateTimeParseException e) {
-			throw new Exception("formato datahora invalido:"+ datahora);
-		}
-
-		DAO.begin();
-		Reuniao r = daoreuniao.read(dt);
-		if(r!=null) {
-			DAO.rollback();	
-			throw new Exception("criar reuniao - reuniao ja existe:" + datahora);
-		}
-
-		r = new Reuniao(dt, assunto);
-		for(String nome : nomes) {
-			Pessoa p = daopessoa.read(nome);
-			if (p==null) {
-				DAO.rollback();	
-				throw new Exception("criar reuniao - participante inexistente:" + nome);
-			}
-			r.adicionar(p);
-			p.adicionar(r);
-		}
-		daoreuniao.create(r);
-		DAO.commit();
-		return r;
-	}
-
-	public static void excluirReuniao(String datahora) throws Exception {
-		LocalDateTime dt;
-		try {
-			dt = LocalDateTime.parse(datahora, formatadorDTH);
-		}
-		catch(DateTimeParseException e) {
-			throw new Exception("formato datahora invalido:"+ datahora);
-		}
-
-		DAO.begin();
-		Reuniao r = daoreuniao.read(dt);
-		if (r==null) {
-			DAO.rollback();
-			throw new Exception("excluir reuniao - reuniao inexistente:" + datahora);
-		}
-
-		for(Pessoa p : r.getParticipantes()) {
-			p.remover(r);
-			daopessoa.update(p);
-		}
-		daoreuniao.delete(r);
-		DAO.commit();
-	}
-
-	public static Viagem criarViagem(String nome, String data, String destino) 
-			throws Exception {
-		LocalDate dt;
-		try {
-			dt = LocalDate.parse(data, formatadorDT);
-		}
-		catch(DateTimeParseException e) {
-			throw new Exception("formato data invalido:"+ data);
-		}
-
-		DAO.begin();
-		Pessoa p = daopessoa.read(nome);
-		if(p == null) {
-			DAO.rollback();
-			throw new Exception("criar viagem - pessoa inexistente:" + nome);
-		}
-		Viagem v = daoviagem.readNomeData(nome,dt);
+		Video v = daoVideo.read(link);
 		if(v != null) {
 			DAO.rollback();
-			throw new Exception("criar viagem - viagem ja existe:"+nome+dt);
+			throw new Exception("video ja cadastrado:" + link);
 		}
-
-		v = new Viagem(dt,destino);
-		p.adicionar(v);
-		p=daopessoa.update(p);
+		
+		LocalDateTime currentDateTime = LocalDateTime.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+		String dataStr = currentDateTime.format(formatter);
+		
+		// Falta converte dataStr para LocalDateTime
+		v = new Video(link, nome, palavra, dataStr);
+		daoVideo.create(v);	
 		DAO.commit();
 		return v;
 	}
-
-	public static Viagem excluirViagem(String nome, String data) 
-			throws Exception {
-		LocalDate dt;
-		try {
-			dt = LocalDate.parse(data, formatadorDT);
-		}
-		catch(DateTimeParseException e) {
-			throw new Exception("formato data invalido:"+ data);
-		}
-
-		DAO.begin();
-		Pessoa p = daopessoa.read(nome);
-		if(p == null) {
-			DAO.rollback();
-			throw new Exception("excluir viagem - pessoa inexistente:" + nome);
-		}
-
-		Viagem v = daoviagem.readNomeData(nome,dt);
-		if(v == null) {
-			DAO.rollback();
-			throw new Exception("excluir viagem - viagem inexistente:"+nome+dt);
-		}
-		p.remover(v);
-		p=daopessoa.update(p);
-		DAO.commit();
-		return v;
-	}
-
-	public static void excluirPessoa(String nome) throws Exception {
-		DAO.begin();
-		Pessoa p = daopessoa.read(nome);
-		if (p==null) {
-			DAO.rollback();	
-			throw new Exception("excluir pessoa - nome inexistente:" + nome);
-		}
-		for(Reuniao r : p.getReunioes()) {
-			r.remover(p);
-			daoreuniao.update(r);
-		}
-		daopessoa.delete(p);  //remove telefones e viagens em cascata
-		DAO.commit();
-	}
-
-	public static Pessoa alterarNome(String nome, String novonome) throws Exception{
-		DAO.begin();		
-		Pessoa p = daopessoa.read(nome);	//usando  chave primaria
-		if (p==null) {
-			DAO.rollback();
-			throw new Exception("alterar nome - nome inexistente:" + nome);
-		}
-		p.setNome(novonome); 			
-		p=daopessoa.update(p);     	
-		DAO.commit();
-		return p;
-	}
-
-	public static Pessoa alterarSexo(String nome, Sexo s) throws Exception{
-		DAO.begin();		
-		Pessoa p = daopessoa.read(nome);	//usando  chave primaria
-		if (p==null) {
-			DAO.rollback();
-			throw new Exception("alterar sexo - nome inexistente:" + nome);
-		}
-		p.setSexo(s); 			
-		p=daopessoa.update(p);     	
-		DAO.commit();
-		return p;
-	}
-
-	public static Pessoa alterarNascimento(String nome, String data) throws Exception{
-		LocalDate dt;
-		try {
-			dt = LocalDate.parse(data, formatadorDT);
-		}
-		catch(DateTimeParseException e) {
-			throw new Exception("formato data invalido:"+ data);
-		}
-
-		DAO.begin();		
-		Pessoa p = daopessoa.read(nome);	//usando  chave primaria
-		if (p==null) {
-			DAO.rollback();
-			throw new Exception("alterar nascimento - nome inexistente:" + nome);
-		}
-
-		p.setDtnascimento(dt); 			
-		p=daopessoa.update(p);     	
-		DAO.commit();
-		return p;
-	}
-
-
-
-	public static Pessoa alterarFoto(String nome, byte[] bytesfoto) throws Exception{
-		DAO.begin();		
-		Pessoa p = daopessoa.read(nome);	//usando  chave primaria
-		if (p==null) {
-			DAO.rollback();
-			throw new Exception("FOTO - nome inexistente:" + nome);
-		}
-		p.setFoto(bytesfoto); 			
-		p=daopessoa.update(p);     	
-		DAO.commit();
-		return p;
-	}
-
-	public static Pessoa alterarApelidos(String nome, String[] apelidos) throws  Exception{
+	
+	public static Usuario cadastrarUsuario(String email) throws  Exception{
 		DAO.begin();	
-		Pessoa p = daopessoa.read(nome);	
-		if(p == null) {
-			DAO.rollback();	
-			throw new Exception("alterar apelido - pessoa inexistente:" + nome);
+		Usuario u = daoUsuario.read(email);
+		if(u != null) {
+			DAO.rollback();
+			throw new Exception("usuario ja cadastrado:" + email);
 		}
-
-		p.criarApelidos(apelidos);
-		p=daopessoa.update(p);		
+		u = new Usuario(email);
+		daoUsuario.create(u);	
 		DAO.commit();
-		return p;
+		return u;
 	}
-
-	public static Telefone alterarTelefone(String numero, String novonumero) throws Exception{
-		DAO.begin();		
-		Telefone t = daotelefone.read(numero);	
-		if (t==null) {
+	
+	public static void adicionarAssunto(String link, String assunto) throws  Exception{
+		DAO.begin();	
+		Video v = daoVideo.read(link);	
+		if(v == null) {
 			DAO.rollback();	
-			throw new Exception("alterar telefone - numero inexistente:" + numero);
+			throw new Exception("video inexistente:" + link);
 		}
-		Telefone t2 = daotelefone.read(novonumero);	
-		if (t2!=null) {
-			DAO.rollback();	
-			throw new Exception("alterar telefone - novo numero ja existe:" + novonumero);
+
+		v.adicionar(new Assunto(assunto));
+
+		daoVideo.update(v);		
+		DAO.commit();
+	}
+	
+	public static Integer getMaiorId() throws Exception {
+		List<Visualizacao> vis = listarVisualizacao();
+		int id = 0;
+		for (Visualizacao v : vis) {
+			if (v.getId() > id) {
+				id = v.getId();
+			}
 		}
-		t.setNumero(novonumero); 	//trocar		
-		t=daotelefone.update(t);     	
-		DAO.commit();	
-		return t;
+		return id;
+	};
+	
+	public static void registrarVisualizacao(String link, String email, int nota) throws Exception{
+		DAO.begin();
+		Video video = daoVideo.read(link);
+		if(video == null) {
+			DAO.rollback();
+			throw new Exception("video inexistente:" + link);
+		}
+		
+		if(nota < 1 || nota > 5) {
+			throw new Exception("nota deve ser de 1 a 5");
+		}
+		
+		Usuario usuario = daoUsuario.read(email);
+		if(usuario == null) {
+			usuario = cadastrarUsuario(email);
+		}
+		
+		int id = getMaiorId() + 1;
+		Visualizacao vis = new Visualizacao(nota, usuario, video);
+		usuario.adicionar(vis);
+		video.adicionar(vis);
+		daoVisualizacao.create(vis);
+		DAO.commit();
 	}
-
-	public static List<Pessoa> listarPessoas(){
-		return daopessoa.readAll();
+	
+	public static Visualizacao localizarVisualizacao(int id) {
+		DAO.begin();
+		Visualizacao vis = daoVisualizacao.read(id);
+		if(vis == null) {
+			DAO.rollback();
+			return null;
+		}else {
+			return vis;	
+		} 
 	}
-	public static List<Telefone> listarTelefones(){
-		return daotelefone.readAll();
+	
+	public static void apagarVisualizacao(int id) throws Exception {
+		DAO.begin();
+		Visualizacao visual = localizarVisualizacao(id);
+		// verifica se a visualizacao existe
+		if(visual == null) {
+			DAO.rollback();
+			throw new Exception("Visualizacao de id " + id + " inexistente");
+		}
+		daoVisualizacao.delete(visual);
+		DAO.commit();
 	}
-	public static List<Reuniao> listarReunioes(){
-		return daoreuniao.readAll();
+	
+	//Métodos de listagem
+	public static List<Video> listarVideos(){
+		return daoVideo.readAll();
 	}
-
-
-	public static void esvaziar() throws  Exception{
-		DAO.clear();	//apaga todos objetos do banco
+	
+	public static List<Usuario> listarUsuarios(){
+		return daoUsuario.readAll();
 	}
-
-	/**********************************************************
-	 * 
-	 * CONSULTAS IMPLEMENTADAS NOS DAO
-	 * 
-	 **********************************************************/
-
-	public static List<Pessoa> consultarPessoas(String caracteres) {
-		if(caracteres.isEmpty())
-			return daopessoa.readAll();
-		else
-			return daopessoa.readLike(caracteres);
+	
+	public static List<Assunto> listarAssunto(){
+		return daoAssunto.readAll();
 	}
-
-	public static List<Telefone> consultarTelefones(String digitos) {
-		if(digitos.isEmpty())
-			return daotelefone.readAll();
-		else
-			return daotelefone.readLike(digitos);
+	
+	public static List<Visualizacao> listarVisualizacao(){
+		return daoVisualizacao.readAll();
 	}
-
-
-	public static List<Reuniao> consultarReunioes(String assunto) {
-		if(assunto.isEmpty())
-			return daoreuniao.readAll();
-		else
-			return daoreuniao.readAssunto(assunto);
+	
+	public static List<Video> consultarVideosPorAssunto(String palavra) {
+		return daoVideo.consultarVideosPorAssunto(palavra); 
 	}
-
-	public static List<Viagem> consultarViagens(String destino) {
-		if(destino.isEmpty())
-			return daoviagem.readAll();
-		else
-			return daoviagem.readDestino(destino);
+	
+	public static List<Video> consultarVideosPorUsuario(String email) {
+		return daoVideo.consultarVideosPorUsuario(email);
 	}
-
-	public static List<Pessoa> consultarPessoasNTelefones(int n) {
-		return daopessoa.readNtelefones(n);
+	
+	public static List<Usuario> consultarUsuarioPorVideo(String link) {
+		return daoUsuario.consultarUsuarioPorVideo(link);
+		
 	}
-
-	public static boolean temTelefoneFixo(String nome) {
-		return daopessoa.temTelefoneFixo(nome);
-	}
-
-	public static boolean temTelefoneCelular(String nome) {
-		return daopessoa.temTelefoneCelular(nome);
-	}
-
-
-
+	
 }

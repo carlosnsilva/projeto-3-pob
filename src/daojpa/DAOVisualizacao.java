@@ -5,7 +5,7 @@ import java.util.List;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
-import modelo.Visualizacao;
+import modelo.*;
 public class DAOVisualizacao extends DAO<Visualizacao> {
 	
 	private static DAOAssunto daoAssunto = new DAOAssunto();
@@ -15,9 +15,19 @@ public class DAOVisualizacao extends DAO<Visualizacao> {
 	
 	public Visualizacao read (Object chave){
 		try{
-			String nome = (String) chave;
-			TypedQuery<Visualizacao> q = manager.createQuery("SELECT * FROM VISUALIZACAO WHERE A.PALAVRA=:n", Visualizacao.class);
+			int nome = (int) chave;
+			TypedQuery<Visualizacao> q = manager.createQuery("SELECT * FROM VISUALIZACAO VI WHERE VI.id=:n", Visualizacao.class);
 			q.setParameter("n", nome);
+			return q.getSingleResult();
+		}catch(NoResultException e){
+			return null;
+		}
+	}
+	
+	public Visualizacao readPorId(int id){
+		try{
+			TypedQuery<Visualizacao> q = manager.createQuery("SELECT * FROM VISUALIZACAO VI WHERE VI.id=:n", Visualizacao.class);
+			q.setParameter("n", id);
 			return q.getSingleResult();
 		}catch(NoResultException e){
 			return null;
@@ -29,11 +39,31 @@ public class DAOVisualizacao extends DAO<Visualizacao> {
 		return q.getResultList();
 	}
 
-	public String VisualizacaoPorUsuario(String email) {
+	public Visualizacao VisualizacaoPorUsuario(String email) {
 		TypedQuery<Visualizacao> q = manager.createQuery("SELECT * FROM VISUALIZACAO VI"
 				+ "JOIN USUARIO U ON U.EMAIL=:X = VI.USUARIO=:Y", Visualizacao.class);
 				q.setParameter("X", email);
 				q.setParameter("Y", daoUsuario.read(email));
-		return q.getResultList().get(0).getUsuario().getEmail().toString();
+				return q.getResultList().get(0);
+	}
+	
+	public Visualizacao readPorLink(String link){
+		try{
+			TypedQuery<Visualizacao> q = manager.createQuery("SELECT * FROM VISUALIZACAO VI WHERE VI.VIDEO=:n", Visualizacao.class);
+			q.setParameter("n", link);
+			return q.getSingleResult();
+		}catch(NoResultException e){
+			return null;
+		}
+	}
+	
+	
+	public Visualizacao VisualizacaoPorVideo(String link) {
+		Visualizacao v = readPorLink(link);
+		
+		TypedQuery<Visualizacao> q = manager.createQuery("SELECT * FROM VISUALIZACAO VI"
+				+ "JOIN VIDEO V ON V.LINK = VI.VIDEO=:Y", Visualizacao.class);
+				q.setParameter("Y", v.getVideo());
+				return q.getResultList().get(0);
 	}
 }

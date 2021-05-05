@@ -26,11 +26,41 @@ public class Visualizacao {
 	@ManyToOne
 	private Video video;
 	
+	private String versao;
+
 	public Visualizacao () {};
 	
 	public Visualizacao(int nota, Usuario usuario, Video video) {
 		this.nota = nota;
 		this.usuario = usuario;
+		this.video = video;
+	}
+	
+	public LocalDateTime getDatahora() {
+		return datahora;
+	}
+
+	public void setDatahora(LocalDateTime datahora) {
+		this.datahora = datahora;
+	}
+
+	public String getVersao() {
+		return versao;
+	}
+
+	public void setVersao(String versao) {
+		this.versao = versao;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setNota(int nota) {
+		this.nota = nota;
+	}
+
+	public void setVideo(Video video) {
 		this.video = video;
 	}
 	

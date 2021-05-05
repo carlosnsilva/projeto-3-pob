@@ -13,6 +13,8 @@ public class Assunto {
 	@Id
 	private String palavra;
 	
+	private String versao;
+
 	@OneToMany(mappedBy="assunto", 
 			cascade=CascadeType.ALL, 	
 			orphanRemoval=true,			//default � false
@@ -22,6 +24,26 @@ public class Assunto {
 	public Assunto () {};
 	
 	public Assunto(String palavra) {
+		this.palavra = palavra;
+	}
+	
+	public String getVersao() {
+		return versao;
+	}
+
+	public void setVersao(String versao) {
+		this.versao = versao;
+	}
+
+	public List<Video> getVideos() {
+		return videos;
+	}
+
+	public void setVideos(List<Video> videos) {
+		this.videos = videos;
+	}
+
+	public void setPalavra(String palavra) {
 		this.palavra = palavra;
 	}
 

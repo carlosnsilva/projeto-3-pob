@@ -13,6 +13,8 @@ public class Usuario {
 	@Id
 	private String email;
 	
+	private String versao;
+	
 	//relacionamento bidirecional um para muitos
 	@OneToMany(mappedBy="usuario", 
 			cascade=CascadeType.ALL, 	
@@ -37,6 +39,22 @@ public class Usuario {
 	
 	public List<Visualizacao> getVisualizacoes(){
 		return visualizacoes;
+	}
+	
+	public String getVersao() {
+		return versao;
+	}
+
+	public void setVersao(String versao) {
+		this.versao = versao;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public void setVisualizacoes(List<Visualizacao> visualizacoes) {
+		this.visualizacoes = visualizacoes;
 	}
 	
 	
