@@ -23,7 +23,6 @@ public class Video {
 	private String link;
 	private String nome;
 	private double media;
-	private String dataHora;
 	private String versao;
 	
 	@ManyToMany(mappedBy="videos", 
@@ -62,10 +61,6 @@ public class Video {
 		this.media = media;
 	}
 
-	public void setDataHora(String dataHora) {
-		this.dataHora = dataHora;
-	}
-
 	public void setAssuntos(List<Assunto> assuntos) {
 		this.assuntos = assuntos;
 	}
@@ -92,10 +87,6 @@ public class Video {
 		return media;
 	}
 	
-	public String getDataHora() {
-		return this.dataHora;
-	}
-	
 	public List<Assunto> getAssuntos() {
 		return assuntos;
 	}
@@ -115,7 +106,7 @@ public class Video {
 	@Override
 	public String toString() {
 		String texto = "\nVideo [" + (link != null ? "link=" + link + ", " : "") + (nome != null ? "nome=" + nome + ", " : "")
-				+ "media=" + getMedia() + ", " + "dataHora=" + dataHora;
+				+ "media=" + getMedia() + ", ";
 		
 		texto+=", assuntos=";
 		for(Assunto a : assuntos) {

@@ -30,7 +30,7 @@ public class DAOUsuario extends DAO<Usuario>{
 		return q.getResultList();
 	}
 	
-	
+	/*
 	public List<Usuario> consultarUsuarioPorVideo(String link){
 		Visualizacao v = daoVisualizacao.readPorLink(link);
 		
@@ -46,5 +46,6 @@ public class DAOUsuario extends DAO<Usuario>{
 		}
 		
 	}
+	*/
 
 }
