@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
-import daojpa.*;
 
 import modelo.Video;
 import modelo.Visualizacao;
@@ -18,9 +17,9 @@ public class DAOVideo extends DAO<Video> {
 	
 	public Video read (Object chave){
 		try{
-			String nome = (String) chave;
-			TypedQuery<Video> q = manager.createQuery("SELECT * FROM VIDEO V WHERE V.NOME=:n", Video.class);
-			q.setParameter("n", nome);
+			String link = (String) chave;
+			TypedQuery<Video> q = manager.createQuery("select v from Video v where v.link=:l", Video.class);
+			q.setParameter("l", link);;
 			return q.getSingleResult();
 		}catch(NoResultException e){
 			return null;

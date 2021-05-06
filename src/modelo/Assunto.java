@@ -4,21 +4,22 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="assunto")
 public class Assunto {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 	private String palavra;
-	
 	private String versao;
 
-	@OneToMany(mappedBy="assunto", 
-			cascade=CascadeType.ALL, 	
-			orphanRemoval=true,			//default � false
-			fetch=FetchType.EAGER) 		//default � LAZY
+	@ManyToMany(cascade=CascadeType.ALL) 		
 	private List<Video> videos = new ArrayList<>();
 	
 	public Assunto () {};
