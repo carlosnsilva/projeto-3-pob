@@ -1,6 +1,8 @@
 package modelo;
 import java.util.ArrayList;
 import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -27,8 +29,9 @@ public class Usuario {
 	
 	public Usuario() {};
 	
-	public Usuario(String email) {
+	public Usuario(String email, String dataNasc) throws Exception {
 		this.email = email;
+		this.dataNasc = new SimpleDateFormat("dd/MM/yyyy").parse(dataNasc);
 	}
 
 	public String getEmail() {

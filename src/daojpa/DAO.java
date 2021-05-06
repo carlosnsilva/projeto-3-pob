@@ -37,7 +37,7 @@ public abstract class DAO<T> implements DAOInterface<T> {
 		if(manager==null){
 			/*****************************************************************************
 			 * 	Determinar o nome da unidade de persistencia a ser processada no persistence.xml
-			 *  Este nome é a concatenacao dos nomes provedor+sgbd lidos do arquivo dados.properties
+			 *  Este nome ï¿½ a concatenacao dos nomes provedor+sgbd lidos do arquivo dados.properties
 			 *****************************************************************************/
 			String nomeUnidadePersistencia=null;
 			Properties dados = new Properties();
@@ -52,7 +52,7 @@ public abstract class DAO<T> implements DAOInterface<T> {
 				log.info("processando a unidade de persistencia: "+ nomeUnidadePersistencia);
 			}
 			catch (Exception e) {
-				log.info("DAO open() - problema na conexão: "+ e.getMessage());
+				log.info("DAO open() - problema na conexï¿½o: "+ e.getMessage());
 				System.exit(0);
 			} 
 
@@ -62,7 +62,7 @@ public abstract class DAO<T> implements DAOInterface<T> {
 			ip = dados.getProperty("ip");
 			Properties prop = new Properties();
 			if(sgbd.equals("postgres"))
-				prop.setProperty("javax.persistence.jdbc.url", "jdbc:postgresql://"+ip+":5432/agenda");
+				prop.setProperty("javax.persistence.jdbc.url", "jdbc:postgresql://"+ip+":5432/repVideo");
 			if(sgbd.equals("mysql"))
 				prop.setProperty("javax.persistence.jdbc.url", "jdbc:mysql://"+ip+":3306/agenda?createDatabaseIfNotExist=true");
 
@@ -157,7 +157,7 @@ public abstract class DAO<T> implements DAOInterface<T> {
 		}
 	}
 
-	//----------------------- TRANSAÇÃO   ----------------------
+	//----------------------- TRANSAï¿½ï¿½O   ----------------------
 	public static void begin(){
 		if(!manager.getTransaction().isActive())
 			manager.getTransaction().begin();

@@ -5,7 +5,7 @@ package aplicacaoConsole;
  * Prof. Fausto Ayres
  *
  */
-/*
+
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -84,5 +84,4 @@ public class Alterar {
 		new Alterar();
 	}
 }
-*/
 

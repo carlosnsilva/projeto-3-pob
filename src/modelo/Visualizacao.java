@@ -19,6 +19,7 @@ public class Visualizacao {
 	private LocalDateTime datahora = LocalDateTime.now();
 	
 	private int nota;
+	private String versao;
 	
 	@ManyToOne		
 	private Usuario usuario;			//lado inverso do relacionamento
@@ -26,7 +27,6 @@ public class Visualizacao {
 	@ManyToOne
 	private Video video;
 	
-	private String versao;
 
 	public Visualizacao () {};
 	

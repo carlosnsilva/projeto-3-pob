@@ -23,7 +23,7 @@ public class Fachada {
 		DAO.close();
 	}
 	
-	public static Video cadastrarVideo(String link, String nome) throws  Exception{
+	public static Video cadastrarVideo(String link, String nome, String palavra) throws  Exception{
 		DAO.begin();
 		if (nome.isEmpty()) {
 			DAO.rollback();
@@ -38,20 +38,32 @@ public class Fachada {
 			DAO.rollback();
 			throw new Exception("Link ja cadastrado: " + link);
 		}
+		Assunto a = daoAssunto.read(palavra);
 		v = new Video(link, nome);
-		daoVideo.create(v);
+		if (a != null) {
+			v.adicionar(a);
+			a.adicionar(v);
+			daoVideo.create(v);
+			
+		} else {
+			Assunto asu = new Assunto(palavra);
+			v.adicionar(asu);
+			asu.adicionar(v);
+			daoVideo.create(v);
+		}
+
 		DAO.commit();
 		return v;
 	}
 	
-	public static Usuario cadastrarUsuario(String email) throws  Exception{
+	public static Usuario cadastrarUsuario(String email, String dataNasc) throws  Exception{
 		DAO.begin();	
 		Usuario u = daoUsuario.read(email);
 		if(u != null) {
 			DAO.rollback();
 			throw new Exception("usuario ja cadastrado:" + email);
 		}
-		u = new Usuario(email);
+		u = new Usuario(email, dataNasc);
 		daoUsuario.create(u);	
 		DAO.commit();
 		return u;
@@ -81,7 +93,7 @@ public class Fachada {
 		}
 		return id;
 	};
-	
+	/*
 	public static void registrarVisualizacao(String link, String email, int nota) throws Exception{
 		DAO.begin();
 		Video video = daoVideo.read(link);
@@ -106,7 +118,7 @@ public class Fachada {
 		daoVisualizacao.create(vis);
 		DAO.commit();
 	}
-	
+	*/
 	public static Visualizacao localizarVisualizacao(int id) {
 		DAO.begin();
 		Visualizacao vis = daoVisualizacao.read(id);
