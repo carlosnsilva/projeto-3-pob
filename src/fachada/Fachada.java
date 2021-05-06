@@ -93,7 +93,7 @@ public class Fachada {
 		}
 		return id;
 	};
-	/*
+	
 	public static void registrarVisualizacao(String link, String email, int nota) throws Exception{
 		DAO.begin();
 		Video video = daoVideo.read(link);
@@ -108,17 +108,16 @@ public class Fachada {
 		
 		Usuario usuario = daoUsuario.read(email);
 		if(usuario == null) {
-			usuario = cadastrarUsuario(email);
+			usuario = cadastrarUsuario(email, null);
 		}
 		
-		int id = getMaiorId() + 1;
 		Visualizacao vis = new Visualizacao(nota, usuario, video);
 		usuario.adicionar(vis);
 		video.adicionar(vis);
 		daoVisualizacao.create(vis);
 		DAO.commit();
 	}
-	*/
+	
 	public static Visualizacao localizarVisualizacao(int id) {
 		DAO.begin();
 		Visualizacao vis = daoVisualizacao.read(id);
@@ -158,7 +157,7 @@ public class Fachada {
 	public static List<Visualizacao> listarVisualizacao(){
 		return daoVisualizacao.readAll();
 	}
-	
+	/*
 	public static List<Video> consultarVideosPorAssunto(String palavra) {
 		return daoVideo.consultarVideosPorAssunto(palavra); 
 	}
@@ -167,9 +166,11 @@ public class Fachada {
 		return daoVideo.consultarVideosPorUsuario(email);
 	}
 	
+	
 	public static List<Usuario> consultarUsuarioPorVideo(String link) {
 		return daoUsuario.consultarUsuarioPorVideo(link);
 		
 	}
+	*/
 	
 }

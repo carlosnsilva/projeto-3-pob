@@ -10,7 +10,7 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/x
 	 	<exclude-unlisted-classes>false</exclude-unlisted-classes> 
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
-		<!-- <property name="javax.persistence.jdbc.url"	value="jdbc:postgresql://54.94.169.84:5432/agenda" />--> 
+		<!-- <property name="javax.persistence.jdbc.url"	value="jdbc:postgresql://127.0.0.1:5432/repVideo" />--> 
 		    <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://127.0.0.1:5432/repVideo" /> 
 		    <property name="javax.persistence.jdbc.user" value="postgres" />
 		    <property name="javax.persistence.jdbc.password" value="0000" />

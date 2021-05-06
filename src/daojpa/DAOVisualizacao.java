@@ -8,22 +8,24 @@ import javax.persistence.TypedQuery;
 import modelo.*;
 public class DAOVisualizacao extends DAO<Visualizacao> {
 	
-	private static DAOAssunto daoAssunto = new DAOAssunto();
 	private static DAOUsuario daoUsuario = new DAOUsuario();
-	private static DAOVideo daoVideo = new DAOVideo();
-	private static DAOVisualizacao daoVisualizacao = new DAOVisualizacao();
 	
 	public Visualizacao read (Object chave){
 		try{
-			int nome = (int) chave;
-			TypedQuery<Visualizacao> q = manager.createQuery("SELECT * FROM VISUALIZACAO VI WHERE VI.id=:n", Visualizacao.class);
-			q.setParameter("n", nome);
+			int id = (int) chave;
+			TypedQuery<Visualizacao> q = manager.createQuery("select vi from Visualizacao vi where vi.id=:i", Visualizacao.class);
+			q.setParameter("i", id);
 			return q.getSingleResult();
 		}catch(NoResultException e){
 			return null;
 		}
 	}
 	
+	public List<Visualizacao> readAll(){
+		TypedQuery<Visualizacao> q = manager.createQuery("select vi from Visualizacao vi order by vi.id", Visualizacao.class);
+		return q.getResultList();
+	}
+	/*
 	public Visualizacao readPorId(int id){
 		try{
 			TypedQuery<Visualizacao> q = manager.createQuery("SELECT * FROM VISUALIZACAO VI WHERE VI.id=:n", Visualizacao.class);
@@ -34,11 +36,6 @@ public class DAOVisualizacao extends DAO<Visualizacao> {
 		}
 	}
 	
-	public List<Visualizacao> readAll(){
-		TypedQuery<Visualizacao> q = manager.createQuery("SELECT * FROM VISUALIZACAO ORDER BY ID", Visualizacao.class);
-		return q.getResultList();
-	}
-
 	public Visualizacao VisualizacaoPorUsuario(String email) {
 		TypedQuery<Visualizacao> q = manager.createQuery("SELECT * FROM VISUALIZACAO VI"
 				+ "JOIN USUARIO U ON U.EMAIL=:X = VI.USUARIO=:Y", Visualizacao.class);
@@ -66,4 +63,5 @@ public class DAOVisualizacao extends DAO<Visualizacao> {
 				q.setParameter("Y", v.getVideo());
 				return q.getResultList().get(0);
 	}
+	*/
 }

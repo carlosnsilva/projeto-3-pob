@@ -26,11 +26,7 @@ public class DAOVideo extends DAO<Video> {
 		}
 	}
 	
-	public List<Video> readAll(){
-		TypedQuery<Video> q = manager.createQuery("SELECT * FROM VIDEO ORDER BY ID", Video.class);
-		return q.getResultList();
-	}
-	
+	/*
 	public List<Video> consultarVideosPorAssunto(String assunto){
 		try {
 			TypedQuery<Video> q = manager.createQuery("SELECT * FROM VIDEO V JOIN "
@@ -71,5 +67,5 @@ public class DAOVideo extends DAO<Video> {
 			return null;
 		}
 	}
-
+	*/
 }

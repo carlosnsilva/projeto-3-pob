@@ -2,46 +2,47 @@ package modelo;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="visualizacao")
 public class Visualizacao {
 	@Id		
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	
-	@Column(columnDefinition = "DATETIME")	//columnDefinition="TIMESTAMP"
-	private LocalDateTime datahora = LocalDateTime.now();
-	
+	private String dataHora = String.valueOf((LocalDateTime.now()));
 	private int nota;
 	private String versao;
 	
-	@ManyToOne		
-	private Usuario usuario;			//lado inverso do relacionamento
+	@ManyToOne(cascade={CascadeType.ALL})
+	private Usuario usuario;
 	
-	@ManyToOne
+	@ManyToOne(cascade={CascadeType.ALL})
 	private Video video;
-	
 
-	public Visualizacao () {};
-	
-	public Visualizacao(int nota, Usuario usuario, Video video) {
+	public Visualizacao() {
+
+	}
+
+	public Visualizacao( int nota, Usuario usuario, Video video) throws Exception {
 		this.nota = nota;
 		this.usuario = usuario;
 		this.video = video;
 	}
 	
-	public LocalDateTime getDatahora() {
-		return datahora;
+	public String getDatahora() {
+		return dataHora;
 	}
 
-	public void setDatahora(LocalDateTime datahora) {
-		this.datahora = datahora;
+	public void setDatahora(String datahora) {
+		this.dataHora = datahora;
 	}
 
 	public String getVersao() {
@@ -69,7 +70,7 @@ public class Visualizacao {
 	}
 	
 	public String getDataHora() {
-		return this.datahora.format(DateTimeFormatter.ofPattern("dd/MM/yyy hh:mm:ss"));
+		return this.dataHora;
 	}
 	
 	public String getUsuario() {
@@ -92,7 +93,7 @@ public class Visualizacao {
 	@Override
 	public String toString() {
 		return "[id=" + id + 
-				", datahora=" + datahora.format(DateTimeFormatter.ofPattern("dd/MM/yyy hh:mm:ss")) + 
+				", datahora=" + dataHora + 
 				", nota=" + nota +
 				"\n usuario=" + usuario.getEmail() + ", video=" + video.getNome() + "]"; 
 	}
