@@ -35,7 +35,7 @@ public class Fachada {
 			DAO.rollback();
 			throw new Exception("Link ja cadastrado: " + link);
 		}
-		Assunto a = daoAssunto.read(palavra);
+		Assunto a = daoAssunto.read(palavra.toLowerCase());
 		v = new Video(link, nome);
 		if (a != null) {
 			v.adicionar(a);
@@ -43,7 +43,7 @@ public class Fachada {
 			daoVideo.create(v);
 			
 		} else {
-			Assunto asu = new Assunto(palavra);
+			Assunto asu = new Assunto(palavra.toLowerCase());
 			v.adicionar(asu);
 			asu.adicionar(v);
 			daoVideo.create(v);
@@ -74,7 +74,7 @@ public class Fachada {
 			throw new Exception("video inexistente:" + link);
 		}
 
-		v.adicionar(new Assunto(assunto));
+		v.adicionar(new Assunto(assunto.toLowerCase()));
 
 		daoVideo.update(v);		
 		DAO.commit();
@@ -138,7 +138,7 @@ public class Fachada {
 		DAO.commit();
 	}
 	
-	//M�todos de listagem
+	//Métodos de listagem
 	public static List<Video> listarVideos(){
 		return daoVideo.readAll();
 	}
@@ -154,20 +154,24 @@ public class Fachada {
 	public static List<Visualizacao> listarVisualizacao(){
 		return daoVisualizacao.readAll();
 	}
-	/*
+	
+	//Métodos de consulta
 	public static List<Video> consultarVideosPorAssunto(String palavra) {
-		return daoVideo.consultarVideosPorAssunto(palavra); 
+		return daoVideo.consultarVideosPorAssunto(palavra.toLowerCase()); 
 	}
 	
 	public static List<Video> consultarVideosPorUsuario(String email) {
 		return daoVideo.consultarVideosPorUsuario(email);
 	}
 	
-	
 	public static List<Usuario> consultarUsuarioPorVideo(String link) {
 		return daoUsuario.consultarUsuarioPorVideo(link);
 		
 	}
-	*/
+	
+	
+	public static void esvaziar() throws  Exception{
+		DAO.clear();	
+	}
 	
 }

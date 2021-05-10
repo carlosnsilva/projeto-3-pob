@@ -10,9 +10,6 @@ import modelo.*;
 
 public class DAOUsuario extends DAO<Usuario>{
 
-	
-	private static DAOVisualizacao daoVisualizacao = new DAOVisualizacao();
-	
 	public Usuario read (Object chave){
 		try{
 			String email = (String) chave;
@@ -24,29 +21,18 @@ public class DAOUsuario extends DAO<Usuario>{
 		}
 	}
 	
-	/*
-	public List<Usuario> readAll(){
-		TypedQuery<Usuario> q = manager.createQuery("select u from Usuario u order by u.id", Usuario.class);
-		return q.getResultList();
-	}
-	*/
 	
-	/*
 	public List<Usuario> consultarUsuarioPorVideo(String link){
-		Visualizacao v = daoVisualizacao.readPorLink(link);
-		
 		try {
-			TypedQuery<Usuario> q = manager.createQuery("SELECT u FROM USUARIO U "
-					+ "JOIN VISUALIZACAO VI ON U.EMAIL = VI.USUARIO=:X"
-					+ "JOIN VIDEO V = V.LINK = VI.VIDEO=:Y", Usuario.class);
-				q.setParameter("X", v.getUsuario());
-				q.setParameter("Y", v.getVideo());
+			TypedQuery<Usuario> q = manager.createQuery("select u from Usuario u join u.visualizacoes vis join vis.video v where v.link=:L"
+					, Usuario.class);
+				q.setParameter("L", link);
 				return q.getResultList();
 		}catch(NoResultException e) {
 			return null;
 		}
 		
 	}
-	*/
+	
 
 }

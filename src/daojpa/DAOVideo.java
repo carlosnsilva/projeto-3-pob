@@ -26,38 +26,31 @@ public class DAOVideo extends DAO<Video> {
 		}
 	}
 	
-	/*
 	public List<Video> consultarVideosPorAssunto(String assunto){
 		try {
-			TypedQuery<Video> q = manager.createQuery("SELECT * FROM VIDEO V JOIN "
-					+ "ASSUNTO A ON A.PALAVRA=:X = V.ASSUNTOS=:Y"
-					+ "V WHERE V.", Video.class);
-				q.setParameter("X", assunto);
-				q.setParameter("Y", daoAssunto.read(assunto));
+			TypedQuery<Video> q = manager.createQuery("select v from Video v join v.assuntos a where a.palavra=:A"
+					, Video.class);
+				q.setParameter("A", assunto);
 				return q.getResultList();
 		}catch(NoResultException e) {
 			return null;
 		}
 		
 	}
+
 	
 	public List<Video> consultarVideosPorUsuario(String email){
-		Visualizacao v = daoVisualizacao.VisualizacaoPorUsuario(email);
-		
 		try {
-			TypedQuery<Video> q = manager.createQuery("SELECT * FROM VIDEO V JOIN "
-					+ "VISUALIZACAO VI ON VI.VIDEO=:X = V.LINK"
-					+ "JOIN USUARIO u ON U.EMAIL=:Z = VI.USUARIO=:C ", Video.class);
-				q.setParameter("Z",daoUsuario.read(email));
-				q.setParameter("C", v.getUsuario());				
-				q.setParameter("X", v.getVideo());
+			TypedQuery<Video> q = manager.createQuery("select v from Video v join v.visualizacoes vis join vis.usuario u where u.email=:E"
+					, Video.class);				
+				q.setParameter("E", email);
 				return q.getResultList();
 		}catch(NoResultException e) {
 			return null;
 		}
 		
 	}
-	
+	/*
 	public Video readPorLink(String link){
 		try{
 			TypedQuery<Video> q = manager.createQuery("SELECT * FROM VIDEO V WHERE V.LINK=:n", Video.class);
