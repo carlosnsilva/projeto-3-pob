@@ -24,11 +24,12 @@ public class DAOUsuario extends DAO<Usuario>{
 		}
 	}
 	
-	
+	/*
 	public List<Usuario> readAll(){
-		TypedQuery<Usuario> q = manager.createQuery("SELECT * FROM USUARIO ORDER BY ID", Usuario.class);
+		TypedQuery<Usuario> q = manager.createQuery("select u from Usuario u order by u.id", Usuario.class);
 		return q.getResultList();
 	}
+	*/
 	
 	/*
 	public List<Usuario> consultarUsuarioPorVideo(String link){
