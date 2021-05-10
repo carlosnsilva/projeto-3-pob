@@ -1,31 +1,16 @@
 package aplicacaoConsole;
-/**********************************
- * IFPB - Curso Superior de Tec. em Sist. para Internet
- * POB - Persistencia de Objetos
- * Prof. Fausto Ayres
- *
- */
 
 import fachada.Fachada;
-
 
 public class Consultar {
 
 	public Consultar(){
+
 		try {
-			Fachada.inicializar();
-			System.out.println("1.\n"+Fachada.consultarPessoas("jo") );
-			System.out.println("2.\n"+Fachada.consultarPessoas("maria") );
-			System.out.println("3.\n"+Fachada.consultarTelefones("98") );
-			System.out.println("4.\n"+Fachada.consultarTelefones("988883333") );
-			System.out.println("5.\n"+Fachada.consultarPessoasNTelefones(2) );
-			System.out.println("---------------------------------");
-			System.out.println("6.\n"+Fachada.temTelefoneCelular("joao") );
-			System.out.println("7.\n"+Fachada.temTelefoneFixo("joao") );
-			System.out.println("8.\n"+Fachada.temTelefoneFixo("maria") );
-			System.out.println("---------------------------------");
-			System.out.println("9.\n"+Fachada.consultarReunioes("economia") );	//mes
-			System.out.println("10.\n"+Fachada.consultarViagens("EUA") );	//mes
+			Fachada.iniciar();
+			System.out.println("1.video por assunto 'angular'\n"+Fachada.consultarVideosPorAssunto("angular")+"\n");
+			System.out.println("2.video pelo usuario 'guilherme@email.com'\n"+Fachada.consultarVideosPorUsuario("guilherme@email.com")+"\n");
+			System.out.println("3.usuario por video \'https://www.youtube.com/watch?v=1u2qu-EmIRc\'\n"+Fachada.consultarUsuarioPorVideo("https://www.youtube.com/watch?v=1u2qu-EmIRc")+"\n");
 			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

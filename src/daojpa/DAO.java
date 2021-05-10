@@ -1,8 +1,3 @@
-/**IFPB - Curso SI 
- * Disciplina de PERSISTENCIA DE OBJETOS
- * @author Prof Fausto Ayres
- */
-
 package daojpa;
 
 import java.io.FileInputStream;
@@ -184,21 +179,21 @@ public abstract class DAO<T> implements DAOInterface<T> {
 		begin();
 		log.debug("esvaziando o banco: ");
 
-		q = manager.createQuery("delete from Viagem");
+		q = manager.createQuery("delete from Assunto");
 		cont =  q.executeUpdate();
-		log.debug("deletou viagens: "+ cont);
+		log.debug("deletou assuntos: "+ cont);
 
-		q = manager.createQuery("delete from Reuniao");
+		q = manager.createQuery("delete from Visualizacao");
 		cont =  q.executeUpdate();
-		log.debug("deletou reunioes: "+ cont);
+		log.debug("deletou visualizações: "+ cont);
 
-		q = manager.createQuery("delete from Telefone");
+		q = manager.createQuery("delete from Video");
 		cont =  q.executeUpdate();
-		log.debug("deletou telefones: "+ cont);
+		log.debug("deletou videos: "+ cont);
 
-		q = manager.createQuery("delete from Pessoa");
+		q = manager.createQuery("delete from Usuario");
 		cont =  q.executeUpdate();
-		log.debug("deletou pessoas: "+ cont);
+		log.debug("deletou usuários: "+ cont);
 		log.debug("");
 
 		commit();

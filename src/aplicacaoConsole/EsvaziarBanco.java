@@ -4,7 +4,7 @@ import fachada.Fachada;
 
 public class EsvaziarBanco {
 	public EsvaziarBanco(){
-		Fachada.inicializar();
+		Fachada.iniciar();
 		try {
 			Fachada.esvaziar();
 			System.out.println("apagou todos os objetos do banco");
