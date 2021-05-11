@@ -72,13 +72,23 @@ public class Visualizacao {
 	public String getDataHora() {
 		return this.dataHora;
 	}
-	
+	/*
 	public String getUsuario() {
 		return this.usuario.getEmail();
 	}
+	*/
 	
+	/*
 	public String getVideo() {
 		return this.video.getLink();
+	}
+	 */
+	public Usuario getUsuario() {
+		return this.usuario;
+	}
+	
+	public Video getVideo() {
+		return this.video;
 	}
 	
 	public int getNota() {

@@ -74,9 +74,19 @@ public class Fachada {
 			throw new Exception("video inexistente:" + link);
 		}
 
-		v.adicionar(new Assunto(assunto.toLowerCase()));
+		Assunto a = daoAssunto.read(assunto.toLowerCase());
+		if (a != null) {
+			v.adicionar(a);
+			a.adicionar(v);
+			daoVideo.create(v);
+			
+		} else {
+			Assunto asu = new Assunto(assunto.toLowerCase());
+			v.adicionar(asu);
+			asu.adicionar(v);
+			daoVideo.create(v);
+		}
 
-		daoVideo.update(v);		
 		DAO.commit();
 	}
 	
@@ -128,13 +138,21 @@ public class Fachada {
 	
 	public static void apagarVisualizacao(int id) throws Exception {
 		DAO.begin();
-		Visualizacao visual = localizarVisualizacao(id);
+		Visualizacao visu = localizarVisualizacao(id);
 		// verifica se a visualizacao existe
-		if(visual == null) {
+		if(visu == null) {
 			DAO.rollback();
 			throw new Exception("Visualizacao de id " + id + " inexistente");
 		}
-		daoVisualizacao.delete(visual);
+		Usuario u = visu.getUsuario();
+		Video v = visu.getVideo();
+		u.remover(visu);
+		visu.setUsuario(null);
+		v.remover(visu);
+		visu.setVideo(null);
+		daoUsuario.update(u);
+		daoVideo.update(v);
+		daoVisualizacao.delete(visu);
 		DAO.commit();
 	}
 	

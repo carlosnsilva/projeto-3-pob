@@ -102,6 +102,11 @@ public class Video {
 	public void adicionar(Visualizacao vis) {
 		visualizacoes.add(vis);
 	}
+	
+	public void remover(Visualizacao v){
+		visualizacoes.remove(v);
+	}
+
 
 	@Override
 	public String toString() {
