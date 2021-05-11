@@ -42,6 +42,10 @@ public class Usuario {
 		visualizacoes.add(v);
 	}
 	
+	public void remover(Visualizacao v){
+		visualizacoes.remove(v);
+	}
+	
 	public List<Visualizacao> getVisualizacoes(){
 		return visualizacoes;
 	}
