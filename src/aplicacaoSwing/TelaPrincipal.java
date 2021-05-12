@@ -90,11 +90,11 @@ public class TelaPrincipal {
 		label = new JLabel("");
 		label.setFont(new Font("Tahoma", Font.PLAIN, 26));
 		label.setHorizontalAlignment(SwingConstants.CENTER);
-	//	label.setText("Inicializando...");
+		label.setText("Inicializando...");
 		label.setBounds(0, 0, frame.getWidth(), frame.getHeight());
-	//	imagem = new ImageIcon(getClass().getResource("/imagens/imagem.jpg"));
-	//	imagem = new ImageIcon(imagem.getImage().getScaledInstance(label.getWidth(),label.getHeight(), Image.SCALE_DEFAULT));
-	//	label.setIcon(imagem);
+		imagem = new ImageIcon(getClass().getResource("/imagens/logo2.png"));
+		imagem = new ImageIcon(imagem.getImage().getScaledInstance(label.getWidth(),label.getHeight(), Image.SCALE_AREA_AVERAGING));
+		label.setIcon(imagem);
 		frame.getContentPane().add(label);
 		frame.setResizable(false);
 		

@@ -22,16 +22,15 @@ public class Usuario {
 	private int id;
 	private String email;
 	private String versao;
-	private Date dataNasc;
 	
 	@OneToMany(mappedBy="usuario")
 	private List<Visualizacao> visualizacoes = new ArrayList<>();
 	
 	public Usuario() {};
 	
-	public Usuario(String email, String dataNasc) throws Exception {
+	public Usuario(String email) throws Exception {
 		this.email = email;
-		this.dataNasc = new SimpleDateFormat("dd/MM/yyyy").parse(dataNasc);
+		
 	}
 
 	public String getEmail() {
