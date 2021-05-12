@@ -53,14 +53,14 @@ public class Fachada {
 		return v;
 	}
 	
-	public static Usuario cadastrarUsuario(String email, String dataNasc) throws  Exception{
+	public static Usuario cadastrarUsuario(String email) throws  Exception{
 		DAO.begin();	
 		Usuario u = daoUsuario.read(email);
 		if(u != null) {
 			DAO.rollback();
 			throw new Exception("usuario ja cadastrado:" + email);
 		}
-		u = new Usuario(email, dataNasc);
+		u = new Usuario(email);
 		daoUsuario.create(u);	
 		DAO.commit();
 		return u;
@@ -115,7 +115,7 @@ public class Fachada {
 		
 		Usuario usuario = daoUsuario.read(email);
 		if(usuario == null) {
-			usuario = cadastrarUsuario(email, null);
+			usuario = cadastrarUsuario(email);
 		}
 		
 		Visualizacao vis = new Visualizacao(nota, usuario, video);

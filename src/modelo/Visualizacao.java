@@ -1,4 +1,5 @@
 package modelo;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -10,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="visualizacao")
@@ -17,9 +19,15 @@ public class Visualizacao {
 	@Id		
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	private String dataHora = String.valueOf((LocalDateTime.now()));
+	//private String dataHora = String.valueOf((LocalDateTime.now()));
 	private int nota;
 	private String versao;
+	
+	@Column(columnDefinition = "DATE")	//columnDefinition="TIMESTAMP"
+	private LocalDate dataHora = LocalDate.now();
+	
+	@Transient
+	private int idade;
 	
 	@ManyToOne(cascade={CascadeType.ALL})
 	private Usuario usuario;
@@ -37,12 +45,8 @@ public class Visualizacao {
 		this.video = video;
 	}
 	
-	public String getDatahora() {
+	public LocalDate getDataHora() {
 		return dataHora;
-	}
-
-	public void setDatahora(String datahora) {
-		this.dataHora = datahora;
 	}
 
 	public String getVersao() {
@@ -53,58 +57,53 @@ public class Visualizacao {
 		this.versao = versao;
 	}
 
+	public int getId() {
+		return this.id;
+	}
+	
 	public void setId(int id) {
 		this.id = id;
 	}
 
+	public int getNota() {
+		return this.nota;
+	}
+	
 	public void setNota(int nota) {
 		this.nota = nota;
+	}
+	
+	public Video getVideo() {
+		return this.video;
 	}
 
 	public void setVideo(Video video) {
 		this.video = video;
 	}
 	
-	public int getId() {
-		return this.id;
-	}
-	
-	public String getDataHora() {
-		return this.dataHora;
-	}
-	/*
-	public String getUsuario() {
-		return this.usuario.getEmail();
-	}
-	*/
-	
-	/*
-	public String getVideo() {
-		return this.video.getLink();
-	}
-	 */
 	public Usuario getUsuario() {
 		return this.usuario;
-	}
-	
-	public Video getVideo() {
-		return this.video;
-	}
-	
-	public int getNota() {
-		return this.nota;
 	}
 	
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 		
 	}
-
+	
+	public int getIdade() {
+		return this.idade;
+	}
+	
+	public void setIdade(int newIdade) {
+		this.idade = newIdade;
+	}
+ 
 	@Override
 	public String toString() {
 		return "[id=" + id + 
 				", datahora=" + dataHora + 
 				", nota=" + nota +
+				", idade=" + idade +
 				"\n usuario=" + usuario.getEmail() + ", video=" + video.getNome() + "]"; 
 	}
 

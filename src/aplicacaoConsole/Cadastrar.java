@@ -15,10 +15,10 @@ public class Cadastrar {
 			Fachada.cadastrarVideo("https://www.youtube.com/watch?v=XLr-igSIUU0&list=PLbaXFvl9CSyUfTbVhyHItpiuONlZCW9ZU&index=3", "Programação para Web I - Inserindo Angular Material - Angular aula 2", "Angular");
 			
 			
-			Fachada.cadastrarUsuario("guilherme@email.com", "14/12/1999");
-			Fachada.cadastrarUsuario("carlos@email.com", "01/01/1998");
-			Fachada.cadastrarUsuario("jane@email.com", "02/02/1997");
-			Fachada.cadastrarUsuario("david@email.com", "03/03/1996");
+			Fachada.cadastrarUsuario("guilherme@email.com");
+			Fachada.cadastrarUsuario("carlos@email.com");
+			Fachada.cadastrarUsuario("jane@email.com");
+			Fachada.cadastrarUsuario("david@email.com");
 			
 			
 			Fachada.registrarVisualizacao("https://www.youtube.com/watch?v=1u2qu-EmIRc", "carlos@email.com", 5); 
