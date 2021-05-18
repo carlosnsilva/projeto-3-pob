@@ -2,6 +2,7 @@ package modelo;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Cacheable;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,15 +10,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.Version;
 
 @Entity
-@Table(name="assunto")
+@Table(name="assunto20182370016")
+@Cacheable(false)
 public class Assunto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String palavra;
-	private String versao;
+	
+	@Version
+	private int versao;
 
 	@ManyToMany(cascade=CascadeType.ALL) 		
 	private List<Video> videos = new ArrayList<>();
@@ -28,11 +33,11 @@ public class Assunto {
 		this.palavra = palavra;
 	}
 	
-	public String getVersao() {
+	public int getVersao() {
 		return versao;
 	}
 
-	public void setVersao(String versao) {
+	public void setVersao(int versao) {
 		this.versao = versao;
 	}
 

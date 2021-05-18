@@ -4,4 +4,4 @@
 
 ### Discentes:
 - Carlos Manoel Nunes
-- Guilherme Alves
+- Guilherme Alves Vieira

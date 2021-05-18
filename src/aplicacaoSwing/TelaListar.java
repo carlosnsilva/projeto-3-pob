@@ -100,15 +100,15 @@ public class TelaListar {
 					model.addColumn("Link");
 					model.addColumn("Nome");
 					model.addColumn("Classificação");
-					model.addColumn("DataHora");
 					model.addColumn("Assuntos");
+					model.addColumn("Versão");
 					//					table.getColumnModel().getColumn(0).setPreferredWidth(10);
 					//					table.getColumnModel().getColumn(1).setPreferredWidth(10);
 
 					List<Video> lista = Fachada.listarVideos();
 					for(Video v : lista)
 						for(Assunto a : v.getAssuntos())
-							model.addRow(new Object[]{ v.getLink(), v.getNome(), v.getMedia(), a.getPalavra() });
+							model.addRow(new Object[]{ v.getLink(), v.getNome(), v.getMedia(), a.getPalavra(), v.getVersao() });
 
 					table.setModel(model);
 				}
@@ -132,12 +132,13 @@ public class TelaListar {
 					model.addColumn("Usuario");
 					model.addColumn("DataHora");
 					model.addColumn("Nota");
+					model.addColumn("Versão");
 					//					table.getColumnModel().getColumn(0).setPreferredWidth(10);
 					//					table.getColumnModel().getColumn(1).setPreferredWidth(10);
 
 					List<Visualizacao> lista = Fachada.listarVisualizacao();
 					for(Visualizacao v : lista)
-							model.addRow(new Object[]{v.getId(), v.getVideo(), v.getUsuario(), v.getDataHora(), v.getNota() });
+							model.addRow(new Object[]{v.getId(), v.getVideo(), v.getUsuario(), v.getDataHora(), v.getNota(), v.getVersao() });
 
 					table.setModel(model);
 				}

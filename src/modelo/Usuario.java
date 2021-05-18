@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+import javax.persistence.Cacheable;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,15 +14,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Version;
 
 @Entity
-@Table(name="usuario")
+@Table(name="usuario20182370016")
+
 public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String email;
-	private String versao;
+	
+	@Version
+	private int versao;
 	
 	@OneToMany(mappedBy="usuario")
 	private List<Visualizacao> visualizacoes = new ArrayList<>();
@@ -49,11 +54,11 @@ public class Usuario {
 		return visualizacoes;
 	}
 	
-	public String getVersao() {
+	public int getVersao() {
 		return versao;
 	}
 
-	public void setVersao(String versao) {
+	public void setVersao(int versao) {
 		this.versao = versao;
 	}
 
