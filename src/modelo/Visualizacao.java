@@ -1,8 +1,7 @@
 package modelo;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
+import javax.persistence.Cacheable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,16 +11,19 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.persistence.Version;
 
 @Entity
-@Table(name="visualizacao")
+@Table(name="visualizacao20182370016")
+@Cacheable(false)
 public class Visualizacao {
 	@Id		
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	//private String dataHora = String.valueOf((LocalDateTime.now()));
 	private int nota;
-	private String versao;
+	
+	@Version
+	private int versao;
 	
 	@Column(columnDefinition = "DATE")	//columnDefinition="TIMESTAMP"
 	private LocalDate dataHora = LocalDate.now();
@@ -49,11 +51,11 @@ public class Visualizacao {
 		return dataHora;
 	}
 
-	public String getVersao() {
+	public int getVersao() {
 		return versao;
 	}
 
-	public void setVersao(String versao) {
+	public void setVersao(int versao) {
 		this.versao = versao;
 	}
 
